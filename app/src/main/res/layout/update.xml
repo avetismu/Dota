@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:focusable="false"
+    android:clickable="false" >
+    
+    <ImageView 
+        android:id="@+id/priority_Icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginRight="10dp"
+        android:contentDescription="@string/priority_Icon"/>
+    
+    <TextView
+        android:id="@+id/date"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_toRightOf="@id/priority_Icon"
+        android:textSize="18sp"
+        android:textColor="#33b9de"
+	/>
+    
+    <TextView 
+        android:id="@+id/update"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"  
+        android:layout_below="@id/date"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_alignLeft="@id/date"
+        android:layout_toRightOf="@id/priority_Icon"
+        android:textSize="16sp"
+        android:layout_marginBottom="7dp"
+        />
+    
+</RelativeLayout>
