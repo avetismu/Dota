@@ -273,27 +273,30 @@ public class LiveGame extends Activity {
 		/* Mutators */
 
     //add values to priority lists and sort them according to time
-    public void fillPriorityArrayLists(){
+    public void fillPriorityArrayLists() {
         //clear all items in current priority list
         lowPriorityEvents.clear();
         mediumPriorityEvents.clear();
         highPriorityEvents.clear();
 
         //fill priority lists with corresponding elements from GameEvents ArrayList
-        for(int i = 0; i<GameEvents.size(); i++){
+        for (int i = 0; i < GameEvents.size(); i++) {
             //fetches game event at index i
             GameEvent currentGE = GameEvents.get(i);
 
             //checks value of GameEvent priority then adds it to appropriate priority lsit
-            switch(currentGE.getPriority()){
+            switch (currentGE.getPriority()) {
                 //priority == 0
-                case 0: lowPriorityEvents.add(currentGE);
+                case 0:
+                    lowPriorityEvents.add(currentGE);
                     break;
                 //priority == 1
-                case 1: mediumPriorityEvents.add(currentGE);
+                case 1:
+                    mediumPriorityEvents.add(currentGE);
                     break;
                 //priority == 2
-                case 2: highPriorityEvents.add(currentGE);
+                case 2:
+                    highPriorityEvents.add(currentGE);
                     break;
             }
         }

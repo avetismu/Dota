@@ -16,6 +16,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".DrawerLiveGame"
+            android:label="@string/title_activity_drawer_live_game" >
+        </activity>
+        <activity
+            android:name=".News"
+            android:label="@string/title_activity_news" >
+        </activity>
     </application>
 
 </manifest>
