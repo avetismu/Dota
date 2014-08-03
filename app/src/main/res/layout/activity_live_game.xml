@@ -1,30 +1,30 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v4.widget.DrawerLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/activity_live_game"
+    android:id="@+id/drawer_layout_live_game"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context=".LiveGame" >
-    
-    <TextView
-        android:id="@+id/feed_title"
-        android:layout_alignParentLeft="true"
+    tools:context="com.tesla.dota.LiveGame" >
+
+    <!--
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="18sp"
-        />
-    
-    <ListView 
-        android:id="@+id/updateList"
-        android:layout_alignParentLeft="true"
+        android:layout_height="match_parent"></RelativeLayout>
+       -->
+
+    <fragment
+        android:id="@+id/live_game_fragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/feed_title"
-        android:focusable="false"
-        android:clickable="false">
-    </ListView>
+        android:name="com.tesla.dota.LiveGameFragment"
+        tools:layout="@layout/fragment_live_game"/>
+
+
+    <fragment android:id="@+id/navigation_drawer_live_game"
+        android:layout_width="@dimen/navigation_drawer_width"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:name="com.tesla.dota.NavigationDrawerFragment"
+        tools:layout="@layout/fragment_navigation_drawer" />
     
-</RelativeLayout>
+</android.support.v4.widget.DrawerLayout>
