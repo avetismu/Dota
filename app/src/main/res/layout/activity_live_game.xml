@@ -12,12 +12,19 @@
         android:layout_height="match_parent"></RelativeLayout>
        -->
 
+    <RelativeLayout
+        android:id="@+id/fragment_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+    <!--
     <fragment
         android:id="@+id/live_game_fragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:name="com.tesla.dota.LiveGameFragment"
         tools:layout="@layout/fragment_live_game"/>
+        -->
 
 
     <fragment android:id="@+id/navigation_drawer_live_game"

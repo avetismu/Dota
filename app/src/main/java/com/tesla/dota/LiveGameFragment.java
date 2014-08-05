@@ -7,6 +7,7 @@ import android.app.Fragment;
 import android.text.format.Time;
 import android.view.LayoutInflater;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
@@ -62,14 +63,21 @@ public class LiveGameFragment extends Fragment {
 
         super.onCreate(savedInstanceState);
 
+    }
+
+    @Override
+    public void onActivityCreated(Bundle savedInstanceState){
+        //calls superclass method
+        super.onActivityCreated(savedInstanceState);
+
         //allows Fragment to add items to Action Bar
         setHasOptionsMenu(true);
-/*
+
         //sets Activity Title
         getActivity().setTitle(Team1 + " vs. " + Team2);
 
         //initialises Feed title TextView
-        final TextView feedTitle = (TextView) getActivity().findViewById(R.id.feed_title);
+        TextView feedTitle = (TextView) getActivity().findViewById(R.id.feed_title);
         //sets Feed Title
         feedTitle.setText("Updates - " + Tournament);
 
@@ -109,9 +117,6 @@ public class LiveGameFragment extends Fragment {
 
         //sets ListView Adapter
         updateList.setAdapter(adapter);
-
-        */
-
     }
 
     /* Fragment Methods */
@@ -153,17 +158,16 @@ public class LiveGameFragment extends Fragment {
 
     /* Menu */
 
-    public boolean onCreateOptionsMenu(Menu menu) {
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        super.onCreateOptionsMenu(menu, inflater);
 
         //inflates Menu
-        getActivity().getMenuInflater().inflate(R.menu.fragment_live_game, menu);
-
-        return true;
-
+        inflater.inflate(R.menu.fragment_live_game, menu);
     }
 
+    @Override
     public boolean onOptionsItemSelected(MenuItem item){
-/*
+
         switch(item.getItemId()){
 
             //Highest Priority First
@@ -171,7 +175,7 @@ public class LiveGameFragment extends Fragment {
                 //HELPER METHOD
                 GameEvents = listByPriorityHigh();
                 //reinitialises adapter with new GameEvent values
-                adapter = new EventAdapter(this.getActivity(), GameEvents);
+                adapter = new EventAdapter(getActivity().getBaseContext(), GameEvents);
                 //sets ListView Adapter
                 updateList.setAdapter(adapter);
                 break;
@@ -205,7 +209,7 @@ public class LiveGameFragment extends Fragment {
                 //sets ListView Adapter
                 updateList.setAdapter(adapter);
         }
-*/
+
         return true;
     }
 

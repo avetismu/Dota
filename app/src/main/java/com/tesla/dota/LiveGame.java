@@ -1,10 +1,13 @@
 package com.tesla.dota;
+
 import android.app.ActionBar;
+import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.app.Activity;
 //import android.support.v4.app.FragmentActivity;
 //import android.support.v4.widget.DrawerLayout;
 import android.support.v4.widget.DrawerLayout;
+import android.app.FragmentManager;
 import android.text.format.Time;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -13,6 +16,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 import java.util.ArrayList;
+import android.net.Uri;
 
 /*TO DO
  * Create abstract Activity containing drawer navigation
@@ -20,7 +24,9 @@ import java.util.ArrayList;
  * inflate the View R.id.activity_content
  */
 
-public class LiveGame extends Activity implements NavigationDrawerFragment.NavigationDrawerCallbacks{
+public class LiveGame extends Activity
+        implements NavigationDrawerFragment.NavigationDrawerCallbacks,
+                   LiveGameFragment.OnFragmentInteractionListener{
 
 
 	/* Fields */
@@ -36,7 +42,7 @@ public class LiveGame extends Activity implements NavigationDrawerFragment.Navig
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_live_game);
 
-
+        //declares Navigation Fragment
         mNavigationDrawerFragment = (NavigationDrawerFragment)
                 getFragmentManager().findFragmentById(R.id.navigation_drawer_live_game);
 
@@ -45,6 +51,23 @@ public class LiveGame extends Activity implements NavigationDrawerFragment.Navig
         mNavigationDrawerFragment.setUp(
                 R.id.navigation_drawer_live_game,
                 (DrawerLayout) findViewById(R.id.drawer_layout_live_game));
+
+        /* Commits LiveGame Fragment */
+
+        //declares Fragment Manager
+        FragmentManager fragmentManager = getFragmentManager();
+
+        //declares new Transaction
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+
+        //initialises LiveGame Fragment
+        LiveGameFragment liveGameFragment= new LiveGameFragment();
+
+        //adds LiveGame Fragment to container in XML
+        fragmentTransaction.add(R.id.fragment_container, liveGameFragment);
+
+        //commits added fragment
+        fragmentTransaction.commit();
     }
 
 
@@ -52,20 +75,17 @@ public class LiveGame extends Activity implements NavigationDrawerFragment.Navig
 
     @Override
     public void onNavigationDrawerItemSelected(int position) {
-/*
-        // update the main content by replacing fragments
-        FragmentManager fragmentManager = getFragmentManager();
-        fragmentManager.beginTransaction()
-                .replace(R.id.container, GameUpdates.newInstance("stuff", "stuff"))
-                .commit();
+
+        /*
+        Can be used to Update Content or Navigate
                 */
     }
 
+    //Sets Up Action Bar
     public void restoreActionBar() {
         ActionBar actionBar = getActionBar();
         actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
         actionBar.setDisplayShowTitleEnabled(true);
-        //actionBar.setTitle(mTitle);
     }
 
 
@@ -85,9 +105,18 @@ public class LiveGame extends Activity implements NavigationDrawerFragment.Navig
 
     /* Menu */
 
+    //Manages Menu Item Selection
+    //No Menu Items in LiveGame Activity
     public boolean onOptionsItemSelected(MenuItem item){
 
         return true;
+    }
+
+    //Implements Abstract Class for LiveGame Fragment
+    public void onFragmentInteraction(Uri uri){
+        /*
+        no Interactions yet */
+
     }
 
 }
