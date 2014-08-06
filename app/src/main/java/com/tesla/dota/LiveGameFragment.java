@@ -61,7 +61,12 @@ public class LiveGameFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
 
+        //calls superclass method
         super.onCreate(savedInstanceState);
+
+
+        //allows Fragment to add items to Action Bar
+        setHasOptionsMenu(true);
 
     }
 
@@ -69,9 +74,6 @@ public class LiveGameFragment extends Fragment {
     public void onActivityCreated(Bundle savedInstanceState){
         //calls superclass method
         super.onActivityCreated(savedInstanceState);
-
-        //allows Fragment to add items to Action Bar
-        setHasOptionsMenu(true);
 
         //sets Activity Title
         getActivity().setTitle(Team1 + " vs. " + Team2);

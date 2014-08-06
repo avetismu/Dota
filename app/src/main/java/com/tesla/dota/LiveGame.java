@@ -107,9 +107,12 @@ public class LiveGame extends Activity
 
     //Manages Menu Item Selection
     //No Menu Items in LiveGame Activity
+    @Override
     public boolean onOptionsItemSelected(MenuItem item){
-
-        return true;
+        //will call activity's handler before passing it on to the fragment
+        switch (item.getItemId()){
+            default: return super.onOptionsItemSelected(item);
+        }
     }
 
     //Implements Abstract Class for LiveGame Fragment
