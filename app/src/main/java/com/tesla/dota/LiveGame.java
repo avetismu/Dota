@@ -68,6 +68,14 @@ public class LiveGame extends Activity
 
         //commits added fragment
         fragmentTransaction.commit();
+
+        /* DEMO */
+
+        //instantiates ConnectionFailedFragment
+        ConnectionFailedFragment connectionFailedFragment = new ConnectionFailedFragment();
+
+        //display connection failed dialog
+        connectionFailedFragment.show(fragmentManager, "Connect Again?");
     }
 
 
