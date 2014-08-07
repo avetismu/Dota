@@ -97,6 +97,8 @@ public class LiveGame extends Activity
     }
 
 
+    /* Menu */
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         if (!mNavigationDrawerFragment.isDrawerOpen()) {
@@ -110,9 +112,6 @@ public class LiveGame extends Activity
         return super.onCreateOptionsMenu(menu);
     }
 
-
-    /* Menu */
-
     //Manages Menu Item Selection
     //No Menu Items in LiveGame Activity
     @Override
@@ -122,6 +121,8 @@ public class LiveGame extends Activity
             default: return super.onOptionsItemSelected(item);
         }
     }
+
+    /* Interface Methods */
 
     //Implements Abstract Class for LiveGame Fragment
     public void onFragmentInteraction(Uri uri){

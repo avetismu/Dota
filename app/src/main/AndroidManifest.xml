@@ -20,6 +20,12 @@
             android:name=".News"
             android:label="@string/title_activity_news" >
         </activity>
+        <activity
+            android:name=".VideoPlayer"
+            android:label="@string/title_activity_video_player" >
+        </activity>
     </application>
+
+    <uses-permission android:name="android.permission.INTERNET" />
 
 </manifest>

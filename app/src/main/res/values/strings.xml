@@ -25,7 +25,6 @@
     <string name="connection_failed_fragment_message">Couldn\'t connect to Server. Please, Check your network\'s connection.</string>
     <string name="connection_failed_fragment_positive_button">Connect Again</string>
     <string name="connection_failed_fragment_negative_button">Cancel</string>
-
-
+    <string name="title_activity_video_player">VideoPlayer</string>
 
 </resources>
