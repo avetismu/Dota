@@ -1,35 +1,30 @@
 package com.tesla.dota;
 
 import android.app.Activity;
-import android.media.AudioManager;
-import android.media.MediaPlayer;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.app.Fragment;
 import android.view.LayoutInflater;
-import android.view.Surface;
-import android.view.SurfaceHolder;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.SurfaceView;
+import android.widget.MediaController;
+import android.widget.VideoView;
 
 
-public class VideoPlayerFragment extends Fragment implements
-        SurfaceHolder.Callback,
-        MediaPlayer.OnPreparedListener {
+public class VideoPlayerFragment extends Fragment {
 
 
     /* Fields */
 
-    //declares MediaPlayer
-    private MediaPlayer mediaPlayer;
-    //declares SurfaceHolder, holds video
-    private SurfaceHolder vidHolder;
-    //declares SurfaceView
-    private SurfaceView vidSurface;
-    //declares URL to video file
-    String url = "https://archive.org/download/ksnn_compilation_master_the_internet/ksnn_compilation_master_the_internet_512kb.mp4";
-
+    //declares VideoView
+    private VideoView videoView;
+    //declares MediaController to be assigned to VideoView
+    private MediaController mediaController;
+    //declares Source of Video
+    private String url = "https://archive.org/download/ksnn_compilation_master_the_internet/ksnn_compilation_master_the_internet_512kb.mp4";
+    //declares uri Source to be passed to VideoView
+    private Uri uri;
 
 
     //Interface declared
@@ -53,12 +48,20 @@ public class VideoPlayerFragment extends Fragment implements
     public void onActivityCreated(Bundle savedInstanceState){
         super.onActivityCreated(savedInstanceState);
 
-        //assigns vidSurface View from layout
-        vidSurface = (SurfaceView) getActivity().findViewById(R.id.surfView_fragment_video_player);
-        //assigns holder id/surfView_fragment_video_player
-        vidHolder = vidSurface.getHolder();
-        //callback setup
-        vidHolder.addCallback(this);
+        //assigns View to vidView
+        videoView = (VideoView) getActivity().findViewById(R.id.vidView_fragment_video_player);
+        //assigns uri from url
+        uri = Uri.parse(url);
+        //assigns videoview source
+        videoView.setVideoURI(uri);
+        //instantiates mediaController
+        mediaController = new MediaController(getActivity());
+        //sets View where mediaController is located. Uses videoViews parent as anchor
+        mediaController.setAnchorView(videoView);
+        //adds mediaController to videoVIew
+        videoView.setMediaController(mediaController);
+        //starts video
+        videoView.start();
     }
 
 
@@ -104,48 +107,5 @@ public class VideoPlayerFragment extends Fragment implements
         public void onFragmentInteraction(Uri uri);
     }
 
-    /* Interface Methods */
 
-
-        /* Surface Holder States */
-    @Override
-    public void surfaceChanged(SurfaceHolder arg0, int arg1, int arg2, int arg3) {
-        // DO NOTHING
     }
-
-    //State in which video is played
-    @Override
-    public void surfaceCreated(SurfaceHolder arg0) {
-
-        //setup
-        try{
-            //initialises new media player
-            mediaPlayer = new MediaPlayer();
-            //sets View where video is played
-            mediaPlayer.setDisplay(vidHolder);
-            //sets source of video
-            mediaPlayer.setDataSource(url);
-            //prepare media player for playback, set audio settings
-            mediaPlayer.prepare();
-            mediaPlayer.setOnPreparedListener(this);
-            mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
-
-        }
-        catch(Exception e){
-           e.printStackTrace();
-        }
-    }
-
-    @Override
-    public void surfaceDestroyed(SurfaceHolder arg0) {
-        // TODO Auto-generated method stub
-    }
-
-        /* Media Player Methods */
-
-    @Override
-    public void onPrepared(MediaPlayer mediaPlayer) {
-       //start playback
-        mediaPlayer.start();
-    }
-}

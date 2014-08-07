@@ -4,9 +4,10 @@
     android:layout_height="match_parent"
     tools:context="com.tesla.dota.VideoPlayerFragment">
 
-    <SurfaceView
-        android:id="@+id/surfView_fragment_video_player"
+    <VideoView
+        android:id="@+id/vidView_fragment_video_player"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:layout_centerInParent="true"/>
 
 </RelativeLayout>
