@@ -63,8 +63,6 @@ public class Vod extends YouTubeBaseActivity implements
 
         //intialises YPlayerFragment
         YPlayerFragment.initialize(YoutubeDeveloperKey, this);
-        //sets fullscreen
-        YPlayer.setFullscreen(true);
 
     }
 
