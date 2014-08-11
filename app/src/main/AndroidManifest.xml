@@ -24,6 +24,10 @@
             android:name=".VideoPlayer"
             android:label="@string/title_activity_video_player" >
         </activity>
+        <activity
+            android:name=".Vod"
+            android:label="@string/title_activity_vod" >
+        </activity>
     </application>
 
     <uses-permission android:name="android.permission.INTERNET" />

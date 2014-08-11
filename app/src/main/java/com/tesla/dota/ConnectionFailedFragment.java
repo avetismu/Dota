@@ -1,15 +1,8 @@
 package com.tesla.dota;
 
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
-import android.net.Uri;
 import android.os.Bundle;
-import android.app.Fragment;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.TextView;
 import android.app.DialogFragment;
 import android.app.Dialog;
 
@@ -49,7 +42,7 @@ public class ConnectionFailedFragment extends DialogFragment {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         //cancel dialog
-                        dismiss();;
+                        dismiss();
                     }
                 });
 

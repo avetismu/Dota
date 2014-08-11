@@ -11,7 +11,7 @@ import android.view.ViewGroup;
 import android.widget.MediaController;
 import android.widget.VideoView;
 
-
+//used for RTSP video live stream
 public class VideoPlayerFragment extends Fragment {
 
 
@@ -102,6 +102,7 @@ public class VideoPlayerFragment extends Fragment {
     }
 
     /* Interface */
+
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
         public void onFragmentInteraction(Uri uri);

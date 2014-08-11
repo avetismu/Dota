@@ -11,6 +11,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import com.tesla.dota.R;
 
+//used for RTSP live stream
 public class VideoPlayer extends Activity implements
         NavigationDrawerFragment.NavigationDrawerCallbacks,
         VideoPlayerFragment.OnFragmentInteractionListener{
@@ -46,11 +47,11 @@ public class VideoPlayer extends Activity implements
         //declares new Transaction
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 
-        //initialises VideoPlayerFragment
-        VideoPlayerFragment videoPlayerFragment= new VideoPlayerFragment();
+        //initialises YoutubeFragment
+        VideoPlayerFragment videoPlayer= new VideoPlayerFragment();
 
-        //adds LiveGame Fragment to container in XML
-        fragmentTransaction.add(R.id.video_player_container, videoPlayerFragment);
+        //adds YoutubeFragment to container in XML
+        fragmentTransaction.add(R.id.video_player_container, videoPlayer);
 
         //commits added fragment
         fragmentTransaction.commit();
@@ -102,4 +103,6 @@ public class VideoPlayer extends Activity implements
         no Interactions yet */
 
     }
+
+
 }

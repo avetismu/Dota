@@ -4,25 +4,11 @@ import android.app.ActionBar;
 import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.app.Activity;
-//import android.support.v4.app.FragmentActivity;
-//import android.support.v4.widget.DrawerLayout;
 import android.support.v4.widget.DrawerLayout;
 import android.app.FragmentManager;
-import android.text.format.Time;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
-import android.widget.TextView;
-import java.util.ArrayList;
 import android.net.Uri;
-
-/*TO DO
- * Create abstract Activity containing drawer navigation
- * use View in NavigatorSuperClass to assign content
- * inflate the View R.id.activity_content
- */
 
 public class LiveGame extends Activity
         implements NavigationDrawerFragment.NavigationDrawerCallbacks,
@@ -41,6 +27,7 @@ public class LiveGame extends Activity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_live_game);
+
 
         //declares Navigation Fragment
         mNavigationDrawerFragment = (NavigationDrawerFragment)
