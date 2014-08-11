@@ -13,7 +13,6 @@ import com.google.android.youtube.player.YouTubeBaseActivity;
 import com.google.android.youtube.player.YouTubeInitializationResult;
 import com.google.android.youtube.player.YouTubePlayer;
 import com.google.android.youtube.player.YouTubePlayerFragment;
-import com.tesla.dota.R;
 
 public class Vod extends YouTubeBaseActivity implements
         NavigationDrawerFragment.NavigationDrawerCallbacks, YouTubePlayer.OnInitializedListener{
@@ -26,8 +25,6 @@ public class Vod extends YouTubeBaseActivity implements
 
     //declares a YouTube Player
     private YouTubePlayer YPlayer;
-    //declares Fragment which plays YouTube video
-    private YouTubePlayerFragment YPlayerFragment;
     //declares API KEY
     private static final String YoutubeDeveloperKey = "AIzaSyCtujPJUBt3GDlFD6R7FZywEZ9q4lQ80FQ";
     //id of the dialog to be brought up in case of error concerning the player
@@ -56,10 +53,11 @@ public class Vod extends YouTubeBaseActivity implements
         FragmentManager fragmentManager = getFragmentManager();
 
         //declares new Transaction
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        //NOT USED YET
+        //FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 
         //fetches YPlayerFragment
-        YPlayerFragment = (YouTubePlayerFragment)fragmentManager.findFragmentById(R.id.vod_youtubeplayerfragment);
+        YouTubePlayerFragment YPlayerFragment = (YouTubePlayerFragment)fragmentManager.findFragmentById(R.id.vod_youtubeplayerfragment);
 
         //intialises YPlayerFragment
         YPlayerFragment.initialize(YoutubeDeveloperKey, this);
@@ -75,16 +73,13 @@ public class Vod extends YouTubeBaseActivity implements
         return true;
     }
 
+    //NO ITEMS YET
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-        if (id == R.id.action_settings) {
-            return true;
+        switch (item.getItemId()){
+            //return superclass method
+            default: return super.onOptionsItemSelected(item);
         }
-        return super.onOptionsItemSelected(item);
     }
 
   /* YouTube Player Methods */
@@ -130,6 +125,7 @@ public class Vod extends YouTubeBaseActivity implements
                 */
     }
 
+    //NOT USED YET
     //Sets Up Action Bar
     public void restoreActionBar() {
         ActionBar actionBar = getActionBar();
