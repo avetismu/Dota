@@ -32,8 +32,7 @@ public class VideoPlayerFragment extends Fragment {
     private OnFragmentInteractionListener mListener;
 
     public static VideoPlayerFragment newInstance() {
-        VideoPlayerFragment fragment = new VideoPlayerFragment();
-        return fragment;
+        return new VideoPlayerFragment();
     }
     public VideoPlayerFragment() {
         // Required empty public constructor
@@ -103,6 +102,7 @@ public class VideoPlayerFragment extends Fragment {
 
     /* Interface */
 
+    //NOT USED YET
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
         public void onFragmentInteraction(Uri uri);

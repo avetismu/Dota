@@ -14,7 +14,7 @@ import com.google.android.youtube.player.YouTubeInitializationResult;
 import com.google.android.youtube.player.YouTubePlayer;
 import com.google.android.youtube.player.YouTubePlayerFragment;
 
-public class Vod extends YouTubeBaseActivity implements
+public class Vods extends YouTubeBaseActivity implements
         NavigationDrawerFragment.NavigationDrawerCallbacks, YouTubePlayer.OnInitializedListener{
 
 
@@ -38,7 +38,7 @@ public class Vod extends YouTubeBaseActivity implements
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_vod);
+        setContentView(R.layout.activity_vods);
 
         //declares Navigation Fragment
         mNavigationDrawerFragment = (NavigationDrawerFragment)
@@ -69,7 +69,7 @@ public class Vod extends YouTubeBaseActivity implements
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.vod, menu);
+        getMenuInflater().inflate(R.menu.vods, menu);
         return true;
     }
 

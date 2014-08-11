@@ -10,22 +10,17 @@
     <string name="title_activity_navigator_super_class">NavigatorSuperClass</string>
     <string name="action_settings">Settings</string>
     <string name="hello_world">Hello world!</string>
-    <string name="title_activity_main">MainActivity</string>
-    <string name="title_activity_drawer">DrawerActivity</string>
-    <string name="title_activity_drawer_navigation">DrawerNavigationActivity</string>
-    <string name="title_activity_test_drawer">TestDrawer</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="action_example">Example action</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="title_activity_test">test</string>
-    <string name="title_activity_drawer_live_game">DrawerLiveGame</string>
     <string name="title_activity_news">News</string>
     <string name="connection_failed_fragment_title">Try Connecting Again?</string>
     <string name="connection_failed_fragment_message">Couldn\'t connect to Server. Please, Check your network\'s connection.</string>
     <string name="connection_failed_fragment_positive_button">Connect Again</string>
     <string name="connection_failed_fragment_negative_button">Cancel</string>
     <string name="title_activity_video_player">VideoPlayer</string>
-    <string name="title_activity_vod">Vod</string>
+    <string name="title_activity_vods">Vods</string>
+    <string name="lorem_ipsum">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor.</string>
 
 </resources>

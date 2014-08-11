@@ -84,29 +84,13 @@ public class LiveGameFragment extends Fragment {
         feedTitle.setText("Updates - " + Tournament);
 
         //adds GameEvent to GameEvents for demo
-        addEvent(0, 0, "She should have died hereafter." + "\n" +
-                "There would have been a time for such a word." + "\n" +
-                "Tomorrow, and tomorrow, and tomorrow" + "\n" +
-                "Creeps in this petty pace from day to day" + "\n" +
-                "To the last syllable of recorded time." + "\n" +
-                "And all our yesterdays have lighted fools" + "\n" +
-                "The way to dusty death. Out, out, brief candle." + "\n" +
-                "Life’s but a walking shadow, a poor player" + "\n" +
-                "That struts and frets his hour upon the stage," + "\n" +
-                "And then is heard no more. It is a tale" + "\n" +
-                "Told by an idiot, full of sound and fury," + "\n" +
-                "Signifying nothing." + "\n" +
-                " - Shakespeare, Macbeth");
+        addEvent(0, 0, getActivity().getResources().getString(R.string.lorem_ipsum));
 
         //adds GameEvent for demo
-        addEvent(1, 1, "I sung of Chaos and Eternal Night," + "\n" +
-                "Taught by the heav'nly Muse to venture down" + "\n" +
-                "The dark descent, and up to reascend... " + "\n" +
-                " - Milton, Paradise Lost");
+        addEvent(1, 1, getActivity().getResources().getString(R.string.lorem_ipsum));
 
         //adds GameEvent for demo
-        addEvent(2, 2, "Love will find a way through paths where wolves fear to prey." + "\n" +
-                "- Lord Gordon Byron");
+        addEvent(2, 2, getActivity().getResources().getString(R.string.lorem_ipsum));
 
         //Setup priority lists
         fillPriorityArrayLists();

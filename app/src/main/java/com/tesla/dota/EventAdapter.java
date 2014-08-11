@@ -66,7 +66,7 @@ public class EventAdapter extends ArrayAdapter<GameEvent>{
             update.setText(currentGE.getUpdate());
 
             //sets image to priorityIcon
-            icon.setImageDrawable(mContext.getResources().getDrawable(R.drawable.ic_action_not_important));
+            icon.setImageDrawable(getIcon(currentGE));
         }
 
         return rowView;
@@ -75,35 +75,35 @@ public class EventAdapter extends ArrayAdapter<GameEvent>{
 		/* Helper Methods */
 
     //returns icon as input stream based on Priority level
-    private InputStream getIcon(GameEvent currentGE){
+    private Drawable getIcon(GameEvent currentGE){
 
         //priority level of current GameEvent
         int Priority = currentGE.getPriority();
 
-        //declares InputStream to be returned
-        InputStream ims = null;
+        //declares drawable to be returned
+        Drawable d = null;
 
         //fetches corresponding icon based on priority level as input stream
         switch(Priority){
 
             //Priority == 0
             case 0:
-                ims = mContext.getResources().openRawResource(R.drawable.ic_action_not_important);
+                d = mContext.getResources().getDrawable(R.drawable.ic_action_not_important);
                 break;
 
             //Priority == 1
             case 1:
-                ims = mContext.getResources().openRawResource(R.drawable.ic_action_half_important);
+                d = mContext.getResources().getDrawable(R.drawable.ic_action_half_important);
                 break;
 
             //Priority == 2
             case 2:
-                ims = mContext.getResources().openRawResource(R.drawable.ic_action_important);
+                d = mContext.getResources().getDrawable(R.drawable.ic_action_important);
                 break;
         }
 
-        //returns icon location as input stream
-        return ims;
+        //returns icon as drawable
+        return d;
 
     }
 

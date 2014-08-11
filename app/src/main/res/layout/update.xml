@@ -2,28 +2,28 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:paddingBottom="@dimen/ui_margin"
+    android:paddingTop="@dimen/ui_margin"
     android:orientation="vertical"
     android:focusable="false"
-    android:clickable="false" >
+    android:clickable="false">
     
     <ImageView 
         android:id="@+id/priority_Icon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
         android:layout_alignParentLeft="true"
-        android:layout_marginRight="10dp"
         android:contentDescription="@string/priority_Icon"/>
     
     <TextView
         android:id="@+id/date"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="10dp"
+        android:layout_marginLeft="@dimen/ui_margin"
+
         android:layout_toRightOf="@id/priority_Icon"
-        android:textSize="15dp"
-        android:textColor="#33b9de"
+        android:textSize="@dimen/text_size_small"
+        android:textColor="#000000"
 	/>
     
     <TextView 
@@ -31,12 +31,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"  
         android:layout_below="@id/date"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
+        android:layout_marginLeft="@dimen/ui_margin_large"
+        android:layout_marginRight="@dimen/ui_margin"
+        android:layout_marginBottom="@dimen/ui_margin"
         android:layout_alignLeft="@id/date"
         android:layout_toRightOf="@id/priority_Icon"
-        android:textSize="16sp"
-        android:layout_marginBottom="7dp"
+        android:textSize="@dimen/text_size_small"
         />
     
 </RelativeLayout>
