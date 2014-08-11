@@ -1,0 +1,14 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.tesla.dota.YoutubeFragment">
+
+
+    <!-- View Containing the Youtube Player -->
+    <com.google.android.youtube.player.YouTubePlayerView
+        android:id="@+id/youtube_player_view"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" />
+
+</FrameLayout>
