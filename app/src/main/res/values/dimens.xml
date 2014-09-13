@@ -9,6 +9,14 @@
     <dimen name="navigation_drawer_width">240dp</dimen>
 
     <!-- Default font sizes -->
-    <dimen name="text_size_small">16sp</dimen>
+    <dimen name="text_size_micro">12sp</dimen>
+    <dimen name="text_size_small">14sp</dimen>
+    <dimen name="text_size_medium">18sp</dimen>
+    <dimen name="text_size_large">22sp</dimen>
+
+    <!-- grid view sizes -->
+    <dimen name="grid_sq_hdpi">90dp</dimen>
+    <dimen name="grid_size">175dp</dimen>
+    <dimen name="grid_spacing">4dp</dimen>
 
 </resources>

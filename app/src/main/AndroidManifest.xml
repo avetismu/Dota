@@ -2,11 +2,14 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.tesla.dota" >
 
+    <uses-sdk
+        android:minSdkVersion="16"/>
+
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme" >
+        android:theme="@style/AppTheme">
         <activity
             android:name=".LiveGame"
             android:label="@string/app_name" >
@@ -18,7 +21,8 @@
         </activity>
         <activity
             android:name=".News"
-            android:label="@string/title_activity_news" >
+            android:label="@string/title_activity_news"
+            android:exported="true">
         </activity>
         <activity
             android:name=".VideoPlayer"
@@ -26,7 +30,8 @@
         </activity>
         <activity
             android:name=".Vods"
-            android:label="Vods" >
+            android:label="Vods"
+            android:exported="true">
         </activity>
     </application>
 

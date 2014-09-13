@@ -6,12 +6,12 @@
     android:layout_height="match_parent"
     tools:context="com.tesla.dota.News">
 
-    <RelativeLayout
+    <FrameLayout
+        android:id="@+id/news_container"
+        android:layout_marginTop="@dimen/ui_margin"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"/>
 
-
-        </RelativeLayout>
 
     <fragment android:id="@+id/navigation_drawer_news"
         android:layout_width="@dimen/navigation_drawer_width"

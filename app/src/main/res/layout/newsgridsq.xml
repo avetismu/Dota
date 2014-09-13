@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/grid_size"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/grid_sq_label"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/grid_sq_hdpi"
+        android:orientation="vertical"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/backgd">
+
+        <TextView
+            android:id="@+id/grid_sq_title"
+            android:padding="@dimen/ui_margin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="start"
+            android:textColor="#33b9de"
+            android:textSize="@dimen/text_size_small"/>
+
+        <TextView
+            android:id="@+id/grid_sq_category"
+            android:padding="@dimen/ui_margin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:singleLine="false"
+            android:textSize="@dimen/text_size_micro"
+            android:gravity="start"/>
+        </LinearLayout>
+
+
+<!--
+    <ImageView
+        android:id="@+id/grid_sq_img"
+        android:padding="@dimen/ui_margin"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:contentDescription="@string/grid_sq_img_contentdescription"
+        />
+        -->
+
+</RelativeLayout>

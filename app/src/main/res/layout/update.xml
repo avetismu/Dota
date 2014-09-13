@@ -23,7 +23,6 @@
 
         android:layout_toRightOf="@id/priority_Icon"
         android:textSize="@dimen/text_size_small"
-        android:textColor="#000000"
 	/>
     
     <TextView 

@@ -1,0 +1,41 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.tesla.dota.NewsReader">
+
+    <TextView
+        android:id="@+id/NewsReader_Title"
+        android:layout_margin="@dimen/ui_margin"
+        android:layout_alignParentTop="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/text_size_large"
+        android:textColor="#33b9de"/>
+
+    <TextView
+        android:id="@+id/NewsReader_Category"
+        android:layout_marginLeft="@dimen/ui_margin"
+        android:layout_below="@id/NewsReader_Title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/text_size_micro"/>
+
+    <TextView
+        android:id="@+id/NewsReader_Summary"
+        android:layout_marginLeft="@dimen/ui_margin"
+        android:layout_below="@id/NewsReader_Category"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/text_size_small"
+        android:textColor="#ffececec"/>
+
+    <TextView
+        android:id="@+id/NewsReader_Content"
+        android:layout_marginLeft="@dimen/ui_margin"
+        android:layout_below="@id/NewsReader_Summary"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/text_size_small"/>
+
+</RelativeLayout>
