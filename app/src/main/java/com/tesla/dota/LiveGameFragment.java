@@ -105,8 +105,6 @@ public class LiveGameFragment extends Fragment {
         updateList.setAdapter(adapter);
     }
 
-    /* Fragment Methods */
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -115,6 +113,9 @@ public class LiveGameFragment extends Fragment {
         return inflater.inflate(R.layout.fragment_live_game, container, false);
 
     }
+
+
+    /* Fragment Methods */
 
     @Override
     public void onAttach(Activity activity) {

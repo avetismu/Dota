@@ -3,6 +3,9 @@ package com.tesla.dota;
 import android.app.Activity;
 import android.app.ActionBar;
 import android.app.Fragment;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
 import android.view.LayoutInflater;
@@ -14,12 +17,18 @@ import android.os.Build;
 
 import com.tesla.dota.R;
 
-public class News extends Activity implements NavigationDrawerFragment.NavigationDrawerCallbacks{
+public class News extends Activity implements
+        NavigationDrawerFragment.NavigationDrawerCallbacks,
+        NewsGrid.OnFragmentInteractionListener,
+        NewsReader.OnFragmentInteractionListener{
 
     /* Fields */
 
     //Activity Navigation Fragment class
     private NavigationDrawerFragment mNavigationDrawerFragment;
+
+
+    /* Activity States */
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,8 +45,38 @@ public class News extends Activity implements NavigationDrawerFragment.Navigatio
                 (DrawerLayout) findViewById(R.id.drawer_layout_news));
 
 
+
+         /* Commits NewsGrid Fragment */
+
+        //declares Fragment Manager
+        FragmentManager fragmentManager = getFragmentManager();
+
+        //declares new Transaction
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+
+        //initialises NewsGrid Fragment
+        //NewsGrid newsGrid = new NewsGrid();
+
+        //adds NewsGrid Fragment to container in XML
+        //fragmentTransaction.add(R.id.news_container, newsGrid);
+
+        //commits added fragment
+        //fragmentTransaction.commit();
+
+        /* Replaces NewsGrid with NewsReader Fragment */
+
+        //initialises NewsReader Fragment
+        NewsReader newsReader = NewsReader.newInstance(0, "lorem Ipsum", "Lorem Ipsum Dolor", "editorial", "r u 'avin a giggle there m8");
+
+        //replaces newsGrid with newsReader
+        fragmentTransaction.add(R.id.news_container, newsReader);
+
+        //commits newsReader Fragment
+        fragmentTransaction.commit();
     }
 
+
+    /* Menu */
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -56,16 +95,20 @@ public class News extends Activity implements NavigationDrawerFragment.Navigatio
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-        if (id == R.id.action_settings) {
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
+       switch(item.getItemId()) {
+
+           default: return super.onOptionsItemSelected(item);
+       }
     }
 
+    /* Interface Methods */
+
+
+    //TO BE REPLACED BY FINAL METHOD
+    //REFER TO SAME METHOD IN LIVEGAME ACTIVITY
+    @Override
+    public void onNavigationDrawerItemSelected(int position) {
+    }
 
     public void restoreActionBar() {
         ActionBar actionBar = getActionBar();
@@ -74,14 +117,10 @@ public class News extends Activity implements NavigationDrawerFragment.Navigatio
         //actionBar.setTitle(mTitle);
     }
 
-    @Override
-    public void onNavigationDrawerItemSelected(int position) {
-/*
-        // update the main content by replacing fragments
-        FragmentManager fragmentManager = getFragmentManager();
-        fragmentManager.beginTransaction()
-                .replace(R.id.container, GameUpdates.newInstance("stuff", "stuff"))
-                .commit();
-                */
+    //Implements Abstract Class for NewsGrid Fragment
+    public void onFragmentInteraction(Uri uri){
+        /*
+        no Interactions yet */
+
     }
 }

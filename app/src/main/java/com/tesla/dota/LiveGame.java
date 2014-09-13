@@ -1,6 +1,7 @@
 package com.tesla.dota;
 
 import android.app.ActionBar;
+import android.content.Intent;
 import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.app.Activity;
@@ -68,8 +69,25 @@ public class LiveGame extends Activity
 
     /* Interface Methods and Drawer Methods */
 
+    //Handles Navigation Bar Selection
     @Override
     public void onNavigationDrawerItemSelected(int position) {
+
+        //declares Intent of Activity to be launched
+        Intent intent;
+
+        switch (position){
+
+            //Vods selected
+            case (2):
+                //intialises intent with Activity to be launched
+                intent = new Intent(this, Vods.class);
+                //launch Activity Specified in Intent
+                this.startActivity(intent);
+                //destroy current Activity
+                this.onDestroy();
+                break;
+        }
 
         /*
         Can be used to Update Content or Navigate

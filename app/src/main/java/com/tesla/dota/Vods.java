@@ -117,6 +117,8 @@ public class Vods extends YouTubeBaseActivity implements
 
 /* Interface Methods and Drawer Methods */
 
+    //TO BE REPLACED BY FINAL METHOD
+    //REFER TO SAME METHOD IN LIVEGAME ACTIVITY
     @Override
     public void onNavigationDrawerItemSelected(int position) {
 
