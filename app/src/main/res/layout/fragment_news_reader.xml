@@ -6,7 +6,7 @@
 
     <TextView
         android:id="@+id/NewsReader_Title"
-        android:layout_margin="@dimen/ui_margin"
+        android:layout_marginLeft="@dimen/ui_margin"
         android:layout_alignParentTop="true"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -15,7 +15,7 @@
 
     <TextView
         android:id="@+id/NewsReader_Category"
-        android:layout_marginLeft="@dimen/ui_margin"
+        android:layout_margin="@dimen/ui_margin"
         android:layout_below="@id/NewsReader_Title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -23,7 +23,7 @@
 
     <TextView
         android:id="@+id/NewsReader_Summary"
-        android:layout_marginLeft="@dimen/ui_margin"
+        android:layout_marginLeft="@dimen/ui_margin_large"
         android:layout_below="@id/NewsReader_Category"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -32,7 +32,7 @@
 
     <TextView
         android:id="@+id/NewsReader_Content"
-        android:layout_marginLeft="@dimen/ui_margin"
+        android:layout_marginLeft="@dimen/ui_margin_large"
         android:layout_below="@id/NewsReader_Summary"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

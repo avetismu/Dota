@@ -7,6 +7,7 @@ import android.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.GridView;
 import android.content.pm.ActivityInfo;
 import java.util.ArrayList;
@@ -79,6 +80,30 @@ public class NewsGrid extends Fragment {
 
         //sets adapter
         mGridView.setAdapter(adapter);
+
+        //handles clicks in gridview
+        mGridView.setOnItemClickListener(
+
+                new AdapterView.OnItemClickListener() {
+
+                    @Override
+                    public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+
+                        //fetches NewsObject at selected position
+                        NewsObject newsObject = mNewsObjects.get(position);
+                        //passes newsObject as argument to callback method onGridClicked
+                        mListener.onGridClicked(newsObject);
+                }
+        });
+    }
+
+    @Override
+    public void onPause(){
+        //empties mNewsObjects
+        mNewsObjects.clear();
+
+        //superclass method
+        super.onPause();
     }
 
 
@@ -116,7 +141,7 @@ public class NewsGrid extends Fragment {
 
     //Allows Communication with Activity and Other Fragments
     public interface OnFragmentInteractionListener {
-        public void onFragmentInteraction(Uri uri);
+        public void onGridClicked(NewsObject newsObject);
     }
 
 }

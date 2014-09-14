@@ -24,7 +24,7 @@ public class NewsReader extends Fragment {
 
     /* Fields */
 
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
+    // the fragment initialisation parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_ID = "ID";
     private static final String ARG_TITLE= "TITLE";
     private static final String ARG_SUMMARY = "SUMMARY";

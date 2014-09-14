@@ -55,23 +55,12 @@ public class News extends Activity implements
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 
         //initialises NewsGrid Fragment
-        //NewsGrid newsGrid = new NewsGrid();
+        NewsGrid newsGrid = new NewsGrid();
 
         //adds NewsGrid Fragment to container in XML
-        //fragmentTransaction.add(R.id.news_container, newsGrid);
+        fragmentTransaction.add(R.id.news_container, newsGrid);
 
         //commits added fragment
-        //fragmentTransaction.commit();
-
-        /* Replaces NewsGrid with NewsReader Fragment */
-
-        //initialises NewsReader Fragment
-        NewsReader newsReader = NewsReader.newInstance(0, "lorem Ipsum", "Lorem Ipsum Dolor", "editorial", "r u 'avin a giggle there m8");
-
-        //replaces newsGrid with newsReader
-        fragmentTransaction.add(R.id.news_container, newsReader);
-
-        //commits newsReader Fragment
         fragmentTransaction.commit();
     }
 
@@ -117,7 +106,37 @@ public class News extends Activity implements
         //actionBar.setTitle(mTitle);
     }
 
-    //Implements Abstract Class for NewsGrid Fragment
+    //Implements Abstract Class Method for NewsGrid Fragment
+    //Opens NewsReader for clicked Grid
+    public void onGridClicked(NewsObject newsObject){
+
+        //instantiates NewsReader with newsObject fields as arguments
+        NewsReader newsReader = NewsReader.newInstance(
+                newsObject.getmID(),
+                newsObject.getmTitle(),
+                newsObject.getmSummary(),
+                newsObject.getmCategory(),
+                newsObject.getmContent()
+        );
+
+        //declares Fragment Manager
+        FragmentManager fragmentManager = getFragmentManager();
+
+        //declares new Transaction
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+
+        //replaces former fragment with NewsReader fragment
+        fragmentTransaction.replace(R.id.news_container, newsReader);
+
+        //adds to stack
+        fragmentTransaction.addToBackStack(null);
+
+        //commits NewsReader to Container
+        fragmentTransaction.commit();
+
+    }
+
+    //Implements Abstract Class for NewsReaderFragment
     public void onFragmentInteraction(Uri uri){
         /*
         no Interactions yet */
