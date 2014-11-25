@@ -1,4 +1,4 @@
-package com.tesla.dota;
+package com.tesla.dota.Model;
 
 import android.text.format.Time;
 
@@ -12,7 +12,7 @@ public class GameEvent {
     private Time Time;
 
     /* Constructor */
-    GameEvent(int ID, int Priority, String Update){
+    public GameEvent(int ID, int Priority, String Update){
         this.ID = ID;
         this.Priority = Priority;
         this.Update = Update;

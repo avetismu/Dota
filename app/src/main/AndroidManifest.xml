@@ -29,7 +29,7 @@
             android:label="@string/title_activity_video_player" >
         </activity>
         <activity
-            android:name=".Vods"
+            android:name=".Activity.Vods"
             android:label="Vods"
             android:exported="true">
         </activity>

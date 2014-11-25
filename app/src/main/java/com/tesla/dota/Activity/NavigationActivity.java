@@ -1,21 +1,20 @@
 package com.tesla.dota.Activity;
 
 import android.app.ActionBar;
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
 import android.view.Menu;
 
+import com.google.android.youtube.player.YouTubeBaseActivity;
 import com.tesla.dota.NavigationDrawerFragment;
-import com.tesla.dota.R;
-import com.tesla.dota.Vods;
 
 /**
  * Extended by all activities in the Application
  * Holds all navigation drawer functionality
+ * also has Youtube functionality
  */
-public class NavigationActivity extends Activity
+public class NavigationActivity extends YouTubeBaseActivity
 implements NavigationDrawerFragment.NavigationDrawerCallbacks {
 
     /* Fields */

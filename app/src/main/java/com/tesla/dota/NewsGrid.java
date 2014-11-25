@@ -73,6 +73,8 @@ public class NewsGrid extends Fragment {
         mNewsObjects.add(new NewsObject(1917, "Lorem Ipsum", "Lorem ipsum dolor sit amet,", "editorial", "r u 'avin a giggle there m8"));
         mNewsObjects.add(new NewsObject(1917, "Lorem Ipsum", "Lorem ipsum dolor sit amet,", "editorial", "r u 'avin a giggle there m8"));
         mNewsObjects.add(new NewsObject(1917, "Lorem Ipsum", "Lorem ipsum dolor sit amet,", "editorial", "r u 'avin a giggle there m8"));
+        mNewsObjects.add(new NewsObject(1917, "Lorem Ipsum", "Lorem ipsum dolor sit amet,", "editorial", "r u 'avin a giggle there m8"));
+        mNewsObjects.add(new NewsObject(1917, "Lorem Ipsum", "Lorem ipsum dolor sit amet,", "editorial", "r u 'avin a giggle there m8"));
         //mNewsObjects.add(new NewsObject(1917, "Giggle", "'avin a giggle?", "editorial", "r u 'avin a giggle there m8"));
 
         //creates new adapter

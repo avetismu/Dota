@@ -22,7 +22,7 @@
         android:id="@+id/live_game_fragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:name="com.tesla.dota.LiveGameFragment"
+        android:name="com.tesla.dota.Fragment.LiveGameFragment"
         tools:layout="@layout/fragment_live_game"/>
         -->
 

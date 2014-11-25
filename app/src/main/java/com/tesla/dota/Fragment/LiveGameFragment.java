@@ -1,4 +1,4 @@
-package com.tesla.dota;
+package com.tesla.dota.Fragment;
 
 import android.app.Activity;
 import android.net.Uri;
@@ -13,6 +13,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 import android.widget.TextView;
+
+import com.tesla.dota.Adapter.EventAdapter;
+import com.tesla.dota.Model.GameEvent;
+import com.tesla.dota.R;
 
 import java.util.ArrayList;
 

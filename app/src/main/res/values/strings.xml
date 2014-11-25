@@ -23,4 +23,5 @@
     <string name="title_activity_vods">Vods</string>
     <string name="lorem_ipsum">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor.</string>
     <string name="grid_sq_img_contentdescription">Image holding news object image</string>
+    <string name="vods_activity_more_vods">Check out these Vods</string>
 </resources>

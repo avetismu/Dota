@@ -1,8 +1,9 @@
-package com.tesla.dota;
+package com.tesla.dota.Activity;
 
 import android.app.ActionBar;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
 import android.view.Menu;
@@ -13,9 +14,14 @@ import com.google.android.youtube.player.YouTubeBaseActivity;
 import com.google.android.youtube.player.YouTubeInitializationResult;
 import com.google.android.youtube.player.YouTubePlayer;
 import com.google.android.youtube.player.YouTubePlayerFragment;
+import com.tesla.dota.NavigationDrawerFragment;
+import com.tesla.dota.R;
+import com.tesla.dota.Fragment.VodListFragment;
 
 public class Vods extends YouTubeBaseActivity implements
-        NavigationDrawerFragment.NavigationDrawerCallbacks, YouTubePlayer.OnInitializedListener{
+        NavigationDrawerFragment.NavigationDrawerCallbacks,
+        YouTubePlayer.OnInitializedListener,
+        VodListFragment.OnFragmentInteractionListener {
 
 
      /* Fields */
@@ -37,6 +43,7 @@ public class Vods extends YouTubeBaseActivity implements
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_vods);
 
@@ -49,18 +56,26 @@ public class Vods extends YouTubeBaseActivity implements
                 R.id.navigation_drawer_video_player,
                 (DrawerLayout) findViewById(R.id.drawer_layout_vod));
 
+
         //declares Fragment Manager
         FragmentManager fragmentManager = getFragmentManager();
-
-        //declares new Transaction
-        //NOT USED YET
-        //FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 
         //fetches YPlayerFragment
         YouTubePlayerFragment YPlayerFragment = (YouTubePlayerFragment)fragmentManager.findFragmentById(R.id.vod_youtubeplayerfragment);
 
         //intialises YPlayerFragment
         YPlayerFragment.initialize(YoutubeDeveloperKey, this);
+
+        //declares new Transaction
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+
+        //initialises VodListFragment
+        VodListFragment vodListFragment = VodListFragment.newInstance();
+
+        //adds VodListFragment Fragment to container in XML
+        fragmentTransaction.add(R.id.vod_vodlistfragment, vodListFragment);
+
+        fragmentTransaction.commit();
 
     }
 
@@ -125,6 +140,14 @@ public class Vods extends YouTubeBaseActivity implements
         /*
         Can be used to Update Content or Navigate
                 */
+    }
+
+
+    //Implements Abstract Class for VodsListFragment Fragment
+    public void onFragmentInteraction(Uri uri){
+        /*
+        no Interactions yet */
+
     }
 
     //NOT USED YET
