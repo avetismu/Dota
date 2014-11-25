@@ -42,13 +42,13 @@ implements NavigationDrawerFragment.NavigationDrawerCallbacks {
 
         //declares Navigation Fragment
         mNavigationDrawerFragment = (NavigationDrawerFragment)
-                getFragmentManager().findFragmentById(drawerId);
+                getFragmentManager().findFragmentById(navigationId);
 
 
         // Set up the drawer.
         mNavigationDrawerFragment.setUp(
-                drawerId,
-                (DrawerLayout) findViewById(navigationId));
+                navigationId,
+                (DrawerLayout) findViewById(drawerId));
 
 
     }

@@ -29,8 +29,8 @@ public class LiveGame extends NavigationActivity
 
         super.onCreate(savedInstanceState,
                 R.layout.activity_live_game,
-                R.id.navigation_drawer_live_game,
-                R.id.drawer_layout_live_game);
+                R.id.drawer_layout_live_game,
+                R.id.navigation_drawer_live_game);
 
         /* Commits LiveGame Fragment */
 
