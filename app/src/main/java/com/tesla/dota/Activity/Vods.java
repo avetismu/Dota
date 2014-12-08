@@ -1,21 +1,17 @@
 package com.tesla.dota.Activity;
 
-import android.app.ActionBar;
-import android.app.Activity;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.v4.widget.DrawerLayout;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
-import com.google.android.youtube.player.YouTubeBaseActivity;
 import com.google.android.youtube.player.YouTubeInitializationResult;
 import com.google.android.youtube.player.YouTubePlayer;
 import com.google.android.youtube.player.YouTubePlayerFragment;
-import com.tesla.dota.NavigationDrawerFragment;
+import com.tesla.dota.Model.VodMatch;
 import com.tesla.dota.R;
 import com.tesla.dota.Fragment.VodListFragment;
 
@@ -29,35 +25,35 @@ public class Vods extends NavigationActivity implements
     //declares a YouTube Player
     private YouTubePlayer YPlayer;
     //declares API KEY
-    private static final String YoutubeDeveloperKey = "AIzaSyCtujPJUBt3GDlFD6R7FZywEZ9q4lQ80FQ";
+    private String YoutubeDeveloperKey;
     //id of the dialog to be brought up in case of error concerning the player
     private static final int RECOVERY_DIALOG_REQUEST = 1;
     //declares link of video to be played
     private String videoLink;
+    //youtube url
+    private VodMatch mCurrentVodMatch;
 
+    //Log Tag
+    private static final String TAG = "VODS_ACTIVITY";
+    
 
     /* Activity States */
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-/*
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_vods);
-
-        //declares Navigation Fragment
-        mNavigationDrawerFragment = (NavigationDrawerFragment)
-                getFragmentManager().findFragmentById(R.id.navigation_drawer_vod);
-
-        // Set up the drawer.
-        mNavigationDrawerFragment.setUp(
-                R.id.navigation_drawer_video_player,
-                (DrawerLayout) findViewById(R.id.drawer_layout_vod));
-                */
 
         super.onCreate(savedInstanceState,
                 R.layout.activity_vods,
                 R.id.drawer_layout_vods,
                 R.id.navigation_drawer_vods);
+
+        //fetches Developer Key
+        YoutubeDeveloperKey = getResources().getString(R.string.API_KEY);
+
+        //DEMO
+        //initialises current VodMatch
+        //TODO: Remove Demo and set real value
+        mCurrentVodMatch = new VodMatch( "EepOhNefloE", "MVP Phoenix", "Cloud9", "1","1");
 
         //declares Fragment Manager
         FragmentManager fragmentManager = getFragmentManager();
@@ -78,6 +74,9 @@ public class Vods extends NavigationActivity implements
         fragmentTransaction.add(R.id.vod_vodlistfragment, vodListFragment);
 
         fragmentTransaction.commit();
+        
+
+        
 
     }
 
@@ -125,7 +124,7 @@ public class Vods extends NavigationActivity implements
                                         YouTubePlayer player, boolean wasRestored) {
         if (!wasRestored) {
             YPlayer = player;
-            YPlayer.cueVideo("2zNSgSzhBfM");
+            YPlayer.cueVideo(mCurrentVodMatch.getUrl());
         }
     }
 
@@ -137,5 +136,11 @@ public class Vods extends NavigationActivity implements
         /*
         no Interactions yet */
 
+    }
+
+    /* Getters Setters */
+
+    public String getTag(){
+        return TAG;
     }
 }

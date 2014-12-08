@@ -20,7 +20,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".News"
+            android:name=".Activity.News"
             android:label="@string/title_activity_news"
             android:exported="true">
         </activity>

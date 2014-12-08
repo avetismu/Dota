@@ -9,7 +9,8 @@ import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
 import android.view.Menu;
 import android.view.MenuItem;
-import com.tesla.dota.R;
+
+import com.tesla.dota.Fragment.NavigationDrawerFragment;
 
 //used for RTSP live stream
 public class VideoPlayer extends Activity implements

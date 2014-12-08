@@ -1,26 +1,29 @@
 package com.tesla.dota.Activity;
 
 import android.app.ActionBar;
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
+import android.util.Log;
 import android.view.Menu;
 
-import com.google.android.youtube.player.YouTubeBaseActivity;
-import com.tesla.dota.NavigationDrawerFragment;
+import com.tesla.dota.Fragment.NavigationDrawerFragment;
 
 /**
  * Extended by all activities in the Application
  * Holds all navigation drawer functionality
- * also has Youtube functionality
  */
-public class NavigationActivity extends YouTubeBaseActivity
+public abstract class NavigationActivity extends Activity
 implements NavigationDrawerFragment.NavigationDrawerCallbacks {
 
     /* Fields */
 
     //Activity Navigation Fragment class
     public static NavigationDrawerFragment mNavigationDrawerFragment;
+
+    //Log Tag
+    private final static String TAG = "NAVIGATION_ACTIVITY";
 
     /* Activity States */
 
@@ -83,19 +86,55 @@ implements NavigationDrawerFragment.NavigationDrawerCallbacks {
 
         //declares Intent of Activity to be launched
         Intent intent;
+        String tag = getTag();
 
         switch (position){
 
+
+            //News Selected
+            case(0):
+
+                if(!tag.equals("NEWS_ACTIVITY")) {
+                    //Logcat Debug Message
+                    Log.d(TAG, "News Selected");
+                    //intialises intent with Activity to be launched
+                    intent = new Intent(this, News.class);
+                    //launch Activity Specified in Intent
+                    this.startActivity(intent);
+                    //destroy current Activity
+                    this.onDestroy();
+                }
+                break;
+
+            //Live Dota Selected
+            case(1):
+                if(!tag.equals("LIVE_GAME_ACTIVITY")) {
+                    //Logcat Debug Message
+                    Log.d(TAG, "Live Dota Selected");
+                    //intialises intent with Activity to be launched
+                    intent = new Intent(this, LiveGame.class);
+                    //launch Activity Specified in Intent
+                    this.startActivity(intent);
+                    //destroy current Activity
+                    this.onDestroy();
+                }
+                break;
+
             //Vods selected
             case (2):
-                //intialises intent with Activity to be launched
-                intent = new Intent(this, Vods.class);
-                //launch Activity Specified in Intent
-                this.startActivity(intent);
-                //destroy current Activity
-                this.onDestroy();
+                if(!tag.equals("VODS_ACTIVITY")) {
+                    //Logcat Debug Message
+                    Log.d(TAG, "Vods Selected");
+                    //intialises intent with Activity to be launched
+                    intent = new Intent(this, Vods.class);
+                    //launch Activity Specified in Intent
+                    this.startActivity(intent);
+                    //destroy current Activity
+                    this.onDestroy();
+                }
                 break;
         }
+
 
         /*
         Can be used to Update Content or Navigate
@@ -108,4 +147,6 @@ implements NavigationDrawerFragment.NavigationDrawerCallbacks {
         actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
         actionBar.setDisplayShowTitleEnabled(true);
     }
+
+    public abstract String getTag();
 }

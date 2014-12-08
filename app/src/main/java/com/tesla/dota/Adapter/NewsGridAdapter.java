@@ -1,4 +1,4 @@
-package com.tesla.dota;
+package com.tesla.dota.Adapter;
 
 import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
@@ -6,9 +6,12 @@ import android.widget.BaseAdapter;
 import android.view.View;
 import android.view.ViewGroup;
 import android.content.Context;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import com.tesla.dota.Model.NewsObject;
+import com.tesla.dota.R;
+
 import java.util.ArrayList;
 
 /**

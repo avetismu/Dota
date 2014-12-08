@@ -1,4 +1,4 @@
-package com.tesla.dota;
+package com.tesla.dota.Fragment;
 
 import android.app.Activity;
 import android.net.Uri;
@@ -9,18 +9,19 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.tesla.dota.R;
 
 
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link NewsReader.OnFragmentInteractionListener} interface
+ * {@link NewsReaderFragment.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link NewsReader#newInstance} factory method to
+ * Use the {@link NewsReaderFragment#newInstance} factory method to
  * create an instance of this fragment.
  *
  */
-public class NewsReader extends Fragment {
+public class NewsReaderFragment extends Fragment {
 
     /* Fields */
 
@@ -56,9 +57,9 @@ public class NewsReader extends Fragment {
      * @param Content News Object Content.
      * @return A new instance of fragment NewsReader.
      */
-    // TODO: Rename and change types and number of parameters
-    public static NewsReader newInstance(int Id, String Title, String Summary, String Category, String Content) {
-        NewsReader fragment = new NewsReader();
+
+    public static NewsReaderFragment newInstance(int Id, String Title, String Summary, String Category, String Content) {
+        NewsReaderFragment fragment = new NewsReaderFragment();
         Bundle args = new Bundle();
         args.putInt(ARG_ID, Id);
         args.putString(ARG_TITLE, Title);
@@ -68,7 +69,7 @@ public class NewsReader extends Fragment {
         fragment.setArguments(args);
         return fragment;
     }
-    public NewsReader() {
+    public NewsReaderFragment() {
         // Required empty public constructor
     }
 

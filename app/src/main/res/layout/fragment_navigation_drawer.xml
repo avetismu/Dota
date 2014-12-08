@@ -6,4 +6,4 @@
     android:divider="@android:color/transparent"
     android:dividerHeight="0dp"
     android:background="#cccc"
-    tools:context="com.tesla.dota.NavigationDrawerFragment" />
+    tools:context="com.tesla.dota.Fragment.NavigationDrawerFragment" />

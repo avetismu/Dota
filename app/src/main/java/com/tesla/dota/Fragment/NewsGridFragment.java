@@ -1,7 +1,6 @@
-package com.tesla.dota;
+package com.tesla.dota.Fragment;
 
 import android.app.Activity;
-import android.net.Uri;
 import android.os.Bundle;
 import android.app.Fragment;
 import android.view.LayoutInflater;
@@ -10,10 +9,15 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.GridView;
 import android.content.pm.ActivityInfo;
+
+import com.tesla.dota.Adapter.NewsGridAdapter;
+import com.tesla.dota.Model.NewsObject;
+import com.tesla.dota.R;
+
 import java.util.ArrayList;
 
 
-public class NewsGrid extends Fragment {
+public class NewsGridFragment extends Fragment {
 
 
     /* Fields */
@@ -30,14 +34,14 @@ public class NewsGrid extends Fragment {
 
     /* Fragment States */
 
-    // TODO: Rename and change types and number of parameters
-    public static NewsGrid newInstance() {
-        NewsGrid fragment = new NewsGrid();
+    public static NewsGridFragment newInstance() {
+        NewsGridFragment fragment = new NewsGridFragment();
         Bundle args = new Bundle();
         fragment.setArguments(args);
         return fragment;
     }
-    public NewsGrid() {
+
+    public NewsGridFragment() {
         // Required empty public constructor
     }
 
@@ -58,7 +62,7 @@ public class NewsGrid extends Fragment {
     }
 
     @Override
-    public void onActivityCreated(Bundle savedInstanceState){
+    public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
 
@@ -95,12 +99,13 @@ public class NewsGrid extends Fragment {
                         NewsObject newsObject = mNewsObjects.get(position);
                         //passes newsObject as argument to callback method onGridClicked
                         mListener.onGridClicked(newsObject);
+                    }
                 }
-        });
+        );
     }
 
     @Override
-    public void onPause(){
+    public void onPause() {
         //empties mNewsObjects
         mNewsObjects.clear();
 

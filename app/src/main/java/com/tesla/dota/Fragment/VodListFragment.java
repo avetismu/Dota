@@ -9,9 +9,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 
+import com.tesla.dota.Model.VodMatch;
 import com.tesla.dota.R;
 import com.tesla.dota.Adapter.VodAdapter;
-import com.tesla.dota.Model.VodObject;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -31,7 +31,7 @@ public class VodListFragment extends Fragment {
     /* Fields */
     private OnFragmentInteractionListener mListener;
 
-    private ArrayList<VodObject> mVodsList = new ArrayList<VodObject>();
+    private ArrayList<VodMatch> mVodsList = new ArrayList<VodMatch>();
 
     /* Constructors and Instances */
 
@@ -71,13 +71,12 @@ public class VodListFragment extends Fragment {
         //calls superclass constructor
         super.onActivityCreated(savedInstanceState);
 
-
         //DEMO
         //VodObjects to be added to ListView
         //TODO: Remove DEMO, Replace with real values
-        ArrayList<VodObject> tempList = new ArrayList<VodObject>();
-        tempList.add(new VodObject("Viola", "Olivia", "1", "0"));
-        tempList.add(new VodObject("Hamlet", "Claudius", "2", "1"));
+        ArrayList<VodMatch> tempList = new ArrayList<VodMatch>();
+        tempList.add(new VodMatch( "Gmv1EeVB2es", "Zyori", "Merlini", "1", "0"));
+        tempList.add(new VodMatch( "fUMKzbCEHZ8", "LD","PyrionFlax","2","1"));
 
         //add tempList to a
         fillmVodsList(tempList);
@@ -124,7 +123,7 @@ public class VodListFragment extends Fragment {
     /**
      * @param list list of VodObjects to be added to field mVodsList
      */
-    public void fillmVodsList(Collection<VodObject> list){
+    public void fillmVodsList(Collection<VodMatch> list){
 
         mVodsList.addAll(list);
 

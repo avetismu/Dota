@@ -1,4 +1,4 @@
-package com.tesla.dota;
+package com.tesla.dota.Model;
 
 /**
 

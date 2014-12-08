@@ -9,4 +9,4 @@
     android:stretchMode="columnWidth"
     android:gravity="center"
     android:scrollbars="vertical"
-    tools:context="com.tesla.dota.NewsGrid"/>
+    tools:context="com.tesla.dota.Fragment.NewsGrid"/>

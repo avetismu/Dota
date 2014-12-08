@@ -9,7 +9,6 @@ import android.net.Uri;
 
 import com.tesla.dota.ConnectionFailedFragment;
 import com.tesla.dota.Fragment.LiveGameFragment;
-import com.tesla.dota.NavigationDrawerFragment;
 import com.tesla.dota.R;
 
 public class LiveGame extends NavigationActivity
@@ -18,9 +17,8 @@ public class LiveGame extends NavigationActivity
 
 	/* Fields */
 
-    //Activity Navigation Fragment class
-    public static NavigationDrawerFragment mNavigationDrawerFragment;
-
+    //Log Tag
+    private final static String TAG = "LIVE_GAME_ACTIVITY";
 
     /* Activity States */
 
@@ -82,6 +80,12 @@ public class LiveGame extends NavigationActivity
         /*
         no Interactions yet */
 
+    }
+
+    /* Getters Setters*/
+
+    public String getTag(){
+        return TAG;
     }
 
 }
