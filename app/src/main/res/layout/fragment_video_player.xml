@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.tesla.dota.VideoPlayerFragment">
+    tools:context="com.tesla.dota.Fragment.VideoPlayerFragment">
 
     <VideoView
         android:id="@+id/vidView_fragment_video_player"

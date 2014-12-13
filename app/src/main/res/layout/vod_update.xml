@@ -16,6 +16,7 @@
         android:id="@+id/vod_update_results"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/ui_margin"
         android:layout_marginBottom="@dimen/ui_margin"
         android:layout_marginLeft="@dimen/ui_margin_large"
         android:textSize="@dimen/text_size_small"/>

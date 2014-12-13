@@ -1,7 +1,6 @@
-package com.tesla.dota;
+package com.tesla.dota.Fragment;
 
 import android.app.Activity;
-import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.app.Fragment;
@@ -10,6 +9,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.MediaController;
 import android.widget.VideoView;
+
+import com.tesla.dota.R;
 
 //used for RTSP video live stream
 public class VideoPlayerFragment extends Fragment {

@@ -7,7 +7,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.net.Uri;
 
-import com.tesla.dota.ConnectionFailedFragment;
+import com.tesla.dota.Fragment.ConnectionFailedFragment;
 import com.tesla.dota.Fragment.LiveGameFragment;
 import com.tesla.dota.R;
 

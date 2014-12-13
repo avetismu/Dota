@@ -148,5 +148,9 @@ implements NavigationDrawerFragment.NavigationDrawerCallbacks {
         actionBar.setDisplayShowTitleEnabled(true);
     }
 
+    /**
+     *
+     * @return
+     */
     public abstract String getTag();
 }

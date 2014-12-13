@@ -29,6 +29,7 @@ public class Match {
 
     /* Getter Setters */
 
+
     public String getTeam1() {
         return mTeam1;
     }

@@ -1,10 +1,12 @@
-package com.tesla.dota;
+package com.tesla.dota.Fragment;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.app.DialogFragment;
 import android.app.Dialog;
+
+import com.tesla.dota.R;
 
 //Dialog called when connection to server fails
 //has options Connect Again and Cancel

@@ -2,6 +2,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.tesla.dota.Vod" >
 
+    <item
+        android:id="@+id/vods_history_drop_down"
+        android:showAsAction="always|collapseActionView"
+        android:actionLayout="@layout/spinner_vodmatch"
+        android:title="@string/history"/>
 
 
 </menu>

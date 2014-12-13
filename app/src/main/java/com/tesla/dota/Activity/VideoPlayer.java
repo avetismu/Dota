@@ -1,26 +1,28 @@
-package com.tesla.dota;
+package com.tesla.dota.Activity;
 
 import android.app.ActionBar;
 import android.app.Activity;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.net.Uri;
+import android.nfc.Tag;
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
 import android.view.Menu;
 import android.view.MenuItem;
 
 import com.tesla.dota.Fragment.NavigationDrawerFragment;
+import com.tesla.dota.R;
+import com.tesla.dota.Fragment.VideoPlayerFragment;
 
 //used for RTSP live stream
-public class VideoPlayer extends Activity implements
-        NavigationDrawerFragment.NavigationDrawerCallbacks,
-        VideoPlayerFragment.OnFragmentInteractionListener{
+public class VideoPlayer extends NavigationActivity implements
+        VideoPlayerFragment.OnFragmentInteractionListener {
 
     /* Fields */
 
-    //Activity Navigation Fragment class
-    public static NavigationDrawerFragment mNavigationDrawerFragment;
+    //Logcat Tag
+    private final static String TAG = "VIDEO_PLAYER_ACTIVITY";
 
 
     /* Activity States */
@@ -28,17 +30,10 @@ public class VideoPlayer extends Activity implements
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_video_player);
-
-        //declares Navigation Fragment
-        mNavigationDrawerFragment = (NavigationDrawerFragment)
-                getFragmentManager().findFragmentById(R.id.navigation_drawer_video_player);
-
-        // Set up the drawer.
-        mNavigationDrawerFragment.setUp(
-                R.id.navigation_drawer_video_player,
-                (DrawerLayout) findViewById(R.id.drawer_layout_video_player));
+        super.onCreate(savedInstanceState,
+                R.layout.activity_video_player,
+                R.id.drawer_layout_video_player,
+                R.id.navigation_drawer_video_player);
 
         /* Commits LiveGame Fragment */
 
@@ -78,33 +73,20 @@ public class VideoPlayer extends Activity implements
         }
     }
 
-
-    /* Interface Methods and Drawer Methods */
-
-    //TO BE REPLACED BY FINAL METHOD
-    //REFER TO SAME METHOD IN LIVEGAME ACTIVITY
-    @Override
-    public void onNavigationDrawerItemSelected(int position) {
-
-        /*
-        Can be used to Update Content or Navigate
-                */
-    }
-
-    //Sets Up Action Bar
-    public void restoreActionBar() {
-        ActionBar actionBar = getActionBar();
-        actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
-        actionBar.setDisplayShowTitleEnabled(true);
-    }
-
         /* Interface Methods */
 
-    //Implements Abstract Class for LiveGame Fragment
+    //Implements Abstract Class for  VideoPlayer Fragment
     public void onFragmentInteraction(Uri uri){
         /*
         no Interactions yet */
 
+    }
+
+    /* Getters */
+
+    @Override
+    public String getTag() {
+        return TAG;
     }
 
 

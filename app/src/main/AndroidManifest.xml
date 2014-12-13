@@ -25,7 +25,7 @@
             android:exported="true">
         </activity>
         <activity
-            android:name=".VideoPlayer"
+            android:name=".Activity.VideoPlayer"
             android:label="@string/title_activity_video_player" >
         </activity>
         <activity

@@ -7,8 +7,10 @@ import android.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
+import com.tesla.dota.Activity.Vods;
 import com.tesla.dota.Model.VodMatch;
 import com.tesla.dota.R;
 import com.tesla.dota.Adapter.VodAdapter;
@@ -59,13 +61,15 @@ public class VodListFragment extends Fragment {
         return inflater.inflate(R.layout.fragment_vod_list, container, false);
     }
 
+    /*
     // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {
         if (mListener != null) {
             mListener.onFragmentInteraction(uri);
         }
-    }
 
+    }
+*/
     @Override
     public void onActivityCreated(Bundle savedInstanceState){
         //calls superclass constructor
@@ -77,6 +81,7 @@ public class VodListFragment extends Fragment {
         ArrayList<VodMatch> tempList = new ArrayList<VodMatch>();
         tempList.add(new VodMatch( "Gmv1EeVB2es", "Zyori", "Merlini", "1", "0"));
         tempList.add(new VodMatch( "fUMKzbCEHZ8", "LD","PyrionFlax","2","1"));
+        tempList.add(new VodMatch("5csI_uwjeRg", "Uliumbrella", "Blaze", "0", "0"));
 
         //add tempList to a
         fillmVodsList(tempList);
@@ -86,6 +91,13 @@ public class VodListFragment extends Fragment {
         VodAdapter adapter = new VodAdapter(getActivity().getBaseContext(), mVodsList);
 
         listView.setAdapter(adapter);
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                mListener.runVod(mVodsList.get((i)));
+            }
+        });
 
     }
 
@@ -117,7 +129,7 @@ public class VodListFragment extends Fragment {
      * >Communicating with Other Fragments</a> for more information.
      */
     public interface OnFragmentInteractionListener {
-        public void onFragmentInteraction(Uri uri);
+        public void runVod(VodMatch vodMatch);
     }
 
     /**
