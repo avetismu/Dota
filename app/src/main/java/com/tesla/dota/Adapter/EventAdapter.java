@@ -17,15 +17,15 @@ public class EventAdapter extends ArrayAdapter<GameEvent>{
 
 	/* Fields */
 
-    private ArrayList<GameEvent> GameEvents;
+    private ArrayList<GameEvent> mGameEvents;
     private Context mContext;
 
 	/* Constructors */
 
-    public EventAdapter(Context context, ArrayList<GameEvent> GameEvents){
-        super(context, R.layout.update, GameEvents);
+    public EventAdapter(Context context, ArrayList<GameEvent> gameEvents){
+        super(context, R.layout.game_event_row, gameEvents);
         this.mContext = context;
-        this.GameEvents = GameEvents;
+        this.mGameEvents = gameEvents;
     }
 
 	/* Methods */
@@ -42,7 +42,7 @@ public class EventAdapter extends ArrayAdapter<GameEvent>{
             LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
             //inflate row layout
-            rowView = inflater.inflate(R.layout.update, parent, false);
+            rowView = inflater.inflate(R.layout.game_event_row, parent, false);
 
             //initialises Time
             TextView time = (TextView) rowView.findViewById(R.id.date);
@@ -52,7 +52,7 @@ public class EventAdapter extends ArrayAdapter<GameEvent>{
             ImageView icon =  (ImageView) rowView.findViewById(R.id.priority_Icon);
 
             //fetches current GameEvent from position
-            GameEvent currentGE = GameEvents.get(position);
+            GameEvent currentGE = mGameEvents.get(position);
 
             //fetches corresponding icon drawable as input stream
             //HELPER METHOD
@@ -64,7 +64,7 @@ public class EventAdapter extends ArrayAdapter<GameEvent>{
             //sets current time
             time.setText(currentGE.getTime().hour + ":" + currentGE.getTime().minute);
 
-            //sets update
+            //sets game_event_row
             update.setText(currentGE.getUpdate());
 
             //sets image to priorityIcon

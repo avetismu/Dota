@@ -48,11 +48,6 @@ public class LiveGameListFragment extends Fragment
     }
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-    }
-
-    @Override
     public void onActivityCreated(Bundle savedInstanceState){
         super.onActivityCreated(savedInstanceState);
 
@@ -77,13 +72,7 @@ public class LiveGameListFragment extends Fragment
     }
 
     @Override
-    public void onPause(){
 
-        mMatches.clear();
-        super.onPause();
-    }
-
-    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
@@ -95,18 +84,6 @@ public class LiveGameListFragment extends Fragment
 
 
     /* Fragment Methods */
-
-    /**
-     *
-     * NOT IN USE
-
-    // TODO: Rename method, update argument and hook method into UI event
-    public void onButtonPressed(Uri uri) {
-        if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
-        }
-    }
-     **/
 
     @Override
     public void onAttach(Activity activity) {
@@ -133,13 +110,8 @@ public class LiveGameListFragment extends Fragment
      * fragment to allow an interaction in this fragment to be communicated
      * to the activity and potentially other fragments contained in that
      * activity.
-     * <p/>
-     * See the Android Training lesson <a href=
-     * "http://developer.android.com/training/basics/fragments/communicating.html"
-     * >Communicating with Other Fragments</a> for more information.
      */
     public interface OnLiveGameListSelectedListener {
-        // TODO: Update argument type and name
         public void onLiveGameListSelected(Match match);
     }
 

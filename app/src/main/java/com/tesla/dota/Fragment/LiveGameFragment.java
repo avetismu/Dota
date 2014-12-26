@@ -16,6 +16,7 @@ import android.widget.TextView;
 
 import com.tesla.dota.Adapter.EventAdapter;
 import com.tesla.dota.Model.GameEvent;
+import com.tesla.dota.Model.Match;
 import com.tesla.dota.R;
 
 import java.util.ArrayList;
@@ -25,33 +26,29 @@ public class LiveGameFragment extends Fragment {
     /* Fields */
 
     //Holds all game updates
-    private ArrayList<GameEvent> GameEvents = new ArrayList<GameEvent>();
+    private ArrayList<GameEvent> mGameEvents = new ArrayList<GameEvent>();
     //Holds low priority game updates
-    private ArrayList<GameEvent> lowPriorityEvents = new ArrayList<GameEvent>();
+    private ArrayList<GameEvent> mLowPriorityEvents = new ArrayList<GameEvent>();
     //Holds medium priority game updates
-    private ArrayList<GameEvent> mediumPriorityEvents = new ArrayList<GameEvent>();
+    private ArrayList<GameEvent> mMediumPriorityEvents = new ArrayList<GameEvent>();
     //Holds high priority game updates
-    private ArrayList<GameEvent> highPriorityEvents = new ArrayList<GameEvent>();
-    //Team Names
-    private String Team1 = "Default Team";
-    private String Team2 = "Random Team";
+    private ArrayList<GameEvent> mHighPriorityEvents = new ArrayList<GameEvent>();
+    //Current Match
+    private static Match mMatch;
     //Tournament Type
-    private String Tournament = "Tourn. Type";
+    private static String mTournament;
     //GameEvent ListView
-    private ListView updateList;
+    private ListView mUpdateList;
     //GameEvent Adapter
-    private EventAdapter adapter;
-
-    //Interface declared
-    //What is the purpose of this?
-    private OnFragmentInteractionListener mListener;
+    private EventAdapter mAdapter;
 
 
     /* Constructors and Instances */
 
-    public static LiveGameFragment newInstance() {
-
+    public static LiveGameFragment newInstance(Match currentMatch, String tournament) {
         LiveGameFragment fragment = new LiveGameFragment();
+        mMatch = currentMatch;
+        mTournament = tournament;
         return fragment;
 
     }
@@ -80,14 +77,15 @@ public class LiveGameFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
 
         //sets Activity Title
-        getActivity().setTitle(Team1 + " vs. " + Team2);
+        //TODO:Fix Title
+        getActivity().setTitle(mMatch.getTeam1() + " vs. " + mMatch.getTeam2());
 
         //initialises Feed title TextView
         TextView feedTitle = (TextView) getActivity().findViewById(R.id.feed_title);
         //sets Feed Title
-        feedTitle.setText("Updates - " + Tournament);
+        feedTitle.setText("Updates - " + mTournament);
 
-        //adds GameEvent to GameEvents for demo
+        //adds GameEvent to mGameEvents for demo
         addEvent(0, 0, getActivity().getResources().getString(R.string.lorem_ipsum));
 
         //adds GameEvent for demo
@@ -97,16 +95,16 @@ public class LiveGameFragment extends Fragment {
         addEvent(2, 2, getActivity().getResources().getString(R.string.lorem_ipsum));
 
         //Setup priority lists
-        fillPriorityArrayLists();
+        fillPriorityLists();
 
         //initialises ListView
-        updateList = (ListView) getActivity().findViewById(R.id.updateList);
+        mUpdateList = (ListView) getActivity().findViewById(R.id.updateList);
 
         //initialises Custom Adapter EventAdapter
-        adapter = new EventAdapter(getActivity().getBaseContext(), GameEvents);
+        mAdapter = new EventAdapter(getActivity().getBaseContext(), mGameEvents);
 
         //sets ListView Adapter
-        updateList.setAdapter(adapter);
+        mUpdateList.setAdapter(mAdapter);
     }
 
     @Override
@@ -122,28 +120,16 @@ public class LiveGameFragment extends Fragment {
     /* Fragment Methods */
 
     @Override
-    public void onAttach(Activity activity) {
-        super.onAttach(activity);
-        try {
-            mListener = (OnFragmentInteractionListener) activity;
-        } catch (ClassCastException e) {
-            throw new ClassCastException(activity.toString()
-                    + " must implement OnFragmentInteractionListener");
-        }
-    }
-
-    @Override
     public void onDetach() {
         super.onDetach();
-        mListener = null;
     }
 
     /* Helper Methods */
 
-    //Adds GameEvent Object to Arraylist() GameEvents
+    //Adds GameEvent Object to Arraylist() mGameEvents
     public void addEvent(int ID, int Priority, String Update){
         GameEvent update = new GameEvent(ID, Priority, Update);
-        GameEvents.add(update);
+        mGameEvents.add(update);
     }
 
 
@@ -164,41 +150,41 @@ public class LiveGameFragment extends Fragment {
             //Highest Priority First
             case (R.id.list_by_priority_High):
                 //HELPER METHOD
-                GameEvents = listByPriorityHigh();
+                listByPriorityHigh();
                 //reinitialises adapter with new GameEvent values
-                adapter = new EventAdapter(getActivity().getBaseContext(), GameEvents);
+                mAdapter = new EventAdapter(getActivity().getBaseContext(), mGameEvents);
                 //sets ListView Adapter
-                updateList.setAdapter(adapter);
+                mUpdateList.setAdapter(mAdapter);
                 break;
 
             //Lowest Priority First
             case (R.id.list_by_priority_Low):
                 //HELPER METHOD
-                GameEvents = listByPriorityLow();
+                listByPriorityLow();
                 //reinitialises adapter with new GameEvent values
-                adapter = new EventAdapter(this.getActivity().getBaseContext(), GameEvents);
+                mAdapter = new EventAdapter(this.getActivity().getBaseContext(), mGameEvents);
                 //sets ListView Adapter
-                updateList.setAdapter(adapter);
+                mUpdateList.setAdapter(mAdapter);
                 break;
 
             //Newest First
             case (R.id.newest):
                 //HELPER METHOD
-                GameEvents = listByTimeNewest();
+                listByTimeNewest();
                 //reinitialises adapter with new GameEvent values
-                adapter = new EventAdapter(this.getActivity().getBaseContext(), GameEvents);
+                mAdapter = new EventAdapter(this.getActivity().getBaseContext(), mGameEvents);
                 //sets ListView Adapter
-                updateList.setAdapter(adapter);
+                mUpdateList.setAdapter(mAdapter);
                 break;
 
             //Oldest First
             case (R.id.oldest):
                 //HELPER METHOD
-                GameEvents = listByTimeOldest();
+                listByTimeOldest();
                 //reinitialises adapter with new GameEvent values
-                adapter = new EventAdapter(this.getActivity().getBaseContext(), GameEvents);
+                mAdapter = new EventAdapter(this.getActivity().getBaseContext(), mGameEvents);
                 //sets ListView Adapter
-                updateList.setAdapter(adapter);
+                mUpdateList.setAdapter(mAdapter);
         }
 
         return true;
@@ -207,56 +193,56 @@ public class LiveGameFragment extends Fragment {
     /* Options Menu Methods */
 
     //Classifies object by priority, highest first
-    public ArrayList<GameEvent> listByPriorityHigh(){
+    public void listByPriorityHigh(){
 
         //declares priorityList to be returned
         ArrayList<GameEvent> priorityList = new ArrayList<GameEvent>();
 
         //Append all priority lists, highest to lowest
-        priorityList.addAll(highPriorityEvents);
-        priorityList.addAll(mediumPriorityEvents);
-        priorityList.addAll(lowPriorityEvents);
+        priorityList.addAll(mHighPriorityEvents);
+        priorityList.addAll(mMediumPriorityEvents);
+        priorityList.addAll(mLowPriorityEvents);
 
-        //returns ArrayList sorted by priority
-        return priorityList;
+        //mGameEvents sorted by priority
+        mGameEvents =  priorityList;
     }
 
 
     //Classifies object by priority, highest first
-    public ArrayList<GameEvent> listByPriorityLow(){
+    public void listByPriorityLow(){
 
         //declares priorityList to be returned
         ArrayList<GameEvent> priorityList = new ArrayList<GameEvent>();
 
         //Append all priority lists, highest to lowest
-        priorityList.addAll(lowPriorityEvents);
-        priorityList.addAll(mediumPriorityEvents);
-        priorityList.addAll(highPriorityEvents);
+        priorityList.addAll(mLowPriorityEvents);
+        priorityList.addAll(mMediumPriorityEvents);
+        priorityList.addAll(mHighPriorityEvents);
 
-        //returns ArrayList sorted by priority
-        return priorityList;
+        //mGameEvents sorted by priority
+        mGameEvents = priorityList;
     }
 
     //sorts all events from Newest to Oldest
-    public ArrayList<GameEvent> listByTimeNewest(){
+    public void listByTimeNewest(){
 
         //declares priorityList to be returned
         ArrayList<GameEvent> priorityList = new ArrayList<GameEvent>();
 
         //Append all priority lists, highest to lowest
-        priorityList.addAll(highPriorityEvents);
-        priorityList.addAll(mediumPriorityEvents);
-        priorityList.addAll(lowPriorityEvents);
+        priorityList.addAll(mHighPriorityEvents);
+        priorityList.addAll(mMediumPriorityEvents);
+        priorityList.addAll(mLowPriorityEvents);
 
         //sort priorityList by time, Newest to oldest
         sortByTime(priorityList);
 
-        //returns ArrayList sorted by priority
-        return priorityList;
+        //mGameEvents sorted by priority
+        mGameEvents = priorityList;
     }
 
     //sorts all events from Oldest to Newest
-    public ArrayList<GameEvent> listByTimeOldest(){
+    public void listByTimeOldest(){
 
         //declares priorityList to be returned
         ArrayList<GameEvent> priorityList = new ArrayList<GameEvent>();
@@ -265,9 +251,9 @@ public class LiveGameFragment extends Fragment {
         ArrayList<GameEvent> tempList = new ArrayList<GameEvent>();
 
         //Append all priority lists, highest to lowest
-        priorityList.addAll(highPriorityEvents);
-        priorityList.addAll(mediumPriorityEvents);
-        priorityList.addAll(lowPriorityEvents);
+        priorityList.addAll(mHighPriorityEvents);
+        priorityList.addAll(mMediumPriorityEvents);
+        priorityList.addAll(mLowPriorityEvents);
 
         //sort priorityList by time, Newest to oldest
         sortByTime(priorityList);
@@ -283,8 +269,8 @@ public class LiveGameFragment extends Fragment {
         //assign tempList to priorityList
         priorityList = tempList;
 
-        //returns ArrayList sorted by priority
-        return priorityList;
+        //mGameEvents sorted by priority
+        mGameEvents = priorityList;
     }
 
     //sorts objects in parameter list by time, with newest first
@@ -314,47 +300,38 @@ public class LiveGameFragment extends Fragment {
 		/* Mutators */
 
     //add values to priority lists and sort them according to time
-    public void fillPriorityArrayLists() {
+    public void fillPriorityLists() {
         //clear all items in current priority list
-        lowPriorityEvents.clear();
-        mediumPriorityEvents.clear();
-        highPriorityEvents.clear();
+        mLowPriorityEvents.clear();
+        mMediumPriorityEvents.clear();
+        mHighPriorityEvents.clear();
 
-        //fill priority lists with corresponding elements from GameEvents ArrayList
-        for (int i = 0; i < GameEvents.size(); i++) {
+        //fill priority lists with corresponding elements from mGameEvents ArrayList
+        for (int i = 0; i < mGameEvents.size(); i++) {
             //fetches game event at index i
-            GameEvent currentGE = GameEvents.get(i);
+            GameEvent currentGE = mGameEvents.get(i);
 
             //checks value of GameEvent priority then adds it to appropriate priority lsit
             switch (currentGE.getPriority()) {
                 //priority == 0
                 case 0:
-                    lowPriorityEvents.add(currentGE);
+                    mLowPriorityEvents.add(currentGE);
                     break;
                 //priority == 1
                 case 1:
-                    mediumPriorityEvents.add(currentGE);
+                    mMediumPriorityEvents.add(currentGE);
                     break;
                 //priority == 2
                 case 2:
-                    highPriorityEvents.add(currentGE);
+                    mHighPriorityEvents.add(currentGE);
                     break;
             }
         }
 
         //rearrange all lists by time
-        sortByTime(lowPriorityEvents);
-        sortByTime(mediumPriorityEvents);
-        sortByTime(highPriorityEvents);
-    }
-
-
-    /* Interfaces */
-
-    //Allows Communication with Activity and Other Fragments
-    public interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
-        public void onFragmentInteraction(Uri uri);
+        sortByTime(mLowPriorityEvents);
+        sortByTime(mMediumPriorityEvents);
+        sortByTime(mHighPriorityEvents);
     }
 
 }

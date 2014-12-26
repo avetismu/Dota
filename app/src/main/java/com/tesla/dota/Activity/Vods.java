@@ -25,9 +25,6 @@ import com.tesla.dota.Fragment.VodListFragment;
 
 import java.util.ArrayList;
 
-/**
- * TODO: Optimise with helper functions
- */
 public class Vods extends NavigationActivity implements
         YouTubePlayer.OnInitializedListener,
         VodListFragment.OnFragmentInteractionListener,
@@ -44,9 +41,7 @@ public class Vods extends NavigationActivity implements
     private String YoutubeDeveloperKey;
     //id of the dialog to be brought up in case of error concerning the player
     private static final int RECOVERY_DIALOG_REQUEST = 1;
-    //declares link of video to be played
-    private String videoLink;
-    //youtube url
+    //current VodMatch Playing
     private VodMatch mCurrentVodMatch;
     //List of the vodmatches viewed
     private VodMatchHistory mHistory;
@@ -89,6 +84,7 @@ public class Vods extends NavigationActivity implements
         //TODO: Remove Demo and set real value
         mCurrentVodMatch = new VodMatch( "EepOhNefloE", "MVP Phoenix", "Cloud9", "1","1");
 
+
         //declares Fragment Manager
         FragmentManager fragmentManager = getFragmentManager();
 
@@ -115,7 +111,6 @@ public class Vods extends NavigationActivity implements
 
     /**
      * Overrides NavigationActivity onCreateOptionsMenu method
-     * TODO: Implement Spinner Functionality
      */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -198,9 +193,12 @@ public class Vods extends NavigationActivity implements
     @Override
     public void onInitializationSuccess(YouTubePlayer.Provider provider,
                                         YouTubePlayer player, boolean wasRestored) {
+
+        //initialisation success
+        wasInitialised = true;
+
         if (!wasRestored) {
-            //initialisation
-            wasInitialised = true;
+
             YPlayer = player;
             YPlayer.cueVideo(mCurrentVodMatch.getUrl());
         }
@@ -210,18 +208,25 @@ public class Vods extends NavigationActivity implements
 /* Interface Methods */
 
     //Implements Abstract Class for VodsListFragment Fragment
+
+    /**
+     *
+     * @param vodMatch vodMatch selected in
+     */
     public void runVod(VodMatch vodMatch){
 
+        //adds VodMatch to mHistory
         mHistory.addVodMatch(vodMatch);
-        adapter.clear();
-        adapter.addAll(mHistory.getFiveLatestVods());
-        adapter.notifyDataSetChanged();
+
+        //HELPER METHOD
+        updateSpinner();
 
         if(wasInitialised){
             YPlayer.cueVideo(vodMatch.getUrl());
         }
     }
 
+    //Implements AdapterView.onItemSelectedListener
     @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
         VodMatch vodMatch = (VodMatch) spinner.getAdapter().getItem(i);
@@ -234,6 +239,19 @@ public class Vods extends NavigationActivity implements
     @Override
     public void onNothingSelected(AdapterView<?> adapterView) {
         //DO NOTHING
+    }
+
+    /* Helper Methods */
+
+    /**
+     * updates with elements from mHistory
+     */
+    private void updateSpinner(){
+
+        adapter.clear();
+        adapter.addAll(mHistory.getFiveLatestVods());
+        adapter.notifyDataSetChanged();
+
     }
 
     /* Getters Setters */

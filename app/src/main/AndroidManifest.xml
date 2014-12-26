@@ -12,7 +12,14 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".Activity.LiveGame"
-            android:label="@string/app_name" >
+            android:label="@string/app_name"
+            android:launchMode="singleTask">
+        </activity>
+        <activity
+            android:name=".Activity.News"
+            android:label="@string/title_activity_news"
+            android:exported="true"
+            android:launchMode="singleTask">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -20,18 +27,15 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Activity.News"
-            android:label="@string/title_activity_news"
-            android:exported="true">
-        </activity>
-        <activity
             android:name=".Activity.VideoPlayer"
-            android:label="@string/title_activity_video_player" >
+            android:label="@string/title_activity_video_player"
+            android:launchMode="singleTask">
         </activity>
         <activity
             android:name=".Activity.Vods"
             android:label="Vods"
-            android:exported="true">
+            android:exported="true"
+            android:launchMode="singleTask">
         </activity>
     </application>
 

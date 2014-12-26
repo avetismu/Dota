@@ -1,6 +1,8 @@
 package com.tesla.dota.Model;
 
 
+import android.text.format.Time;
+
 public class Match {
     /* Fields */
 
@@ -8,6 +10,7 @@ public class Match {
     private String mTeam2;
     private String mResults1;
     private String mResults2;
+    private Time mTime;
 
     /* Constructors */
 
@@ -24,9 +27,19 @@ public class Match {
         this.mTeam2 = mTeam2;
         this.mResults1 = mResults1;
         this.mResults2 = mResults2;
-
+        this.mTime = new Time();
+        this.mTime.setToNow();
     }
 
+    public Match(String mTeam1, String mTeam2, String mResults1, String mResults2, Time mTime){
+
+        this.mTeam1 = mTeam1;
+        this.mTeam2 = mTeam2;
+        this.mResults1 = mResults1;
+        this.mResults2 = mResults2;
+        this.mTime = mTime;
+
+    }
     /* Getter Setters */
 
 
@@ -60,5 +73,13 @@ public class Match {
 
     public void setResults2(String mResults2) {
         this.mResults2 = mResults2;
+    }
+
+    public Time getmTime() {
+        return mTime;
+    }
+
+    public void setmTime(Time mTime) {
+        this.mTime = mTime;
     }
 }

@@ -9,10 +9,14 @@ import android.net.Uri;
 
 import com.tesla.dota.Fragment.ConnectionFailedFragment;
 import com.tesla.dota.Fragment.LiveGameFragment;
+import com.tesla.dota.Fragment.LiveGameListFragment;
+import com.tesla.dota.Model.Match;
 import com.tesla.dota.R;
 
+import java.util.ArrayList;
+
 public class LiveGame extends NavigationActivity
-        implements LiveGameFragment.OnFragmentInteractionListener {
+        implements LiveGameListFragment.OnLiveGameListSelectedListener{
 
 
 	/* Fields */
@@ -35,25 +39,18 @@ public class LiveGame extends NavigationActivity
         //declares Fragment Manager
         FragmentManager fragmentManager = getFragmentManager();
 
-        //declares new Transaction
+        //initialises fragmentTransaction
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 
-        //initialises LiveGame Fragment
-        LiveGameFragment liveGameFragment= new LiveGameFragment();
+        //initialises LiveGameList Fragment
+        LiveGameListFragment liveGameListFragment = LiveGameListFragment.newInstance(new ArrayList<Match>());
 
-        //adds LiveGame Fragment to container in XML
-        fragmentTransaction.add(R.id.fragment_container, liveGameFragment);
+        //adds LiveGameList Fragment to container in XML
+        fragmentTransaction.add(R.id.fragment_container, liveGameListFragment);
 
         //commits added fragment
         fragmentTransaction.commit();
 
-        /* DEMO */
-
-        //instantiates ConnectionFailedFragment
-        ConnectionFailedFragment connectionFailedFragment = new ConnectionFailedFragment();
-
-        //display connection failed dialog
-        connectionFailedFragment.show(fragmentManager, "Connect Again?");
     }
 
     /* Menu */
@@ -75,13 +72,24 @@ public class LiveGame extends NavigationActivity
 
     /* Interface Methods */
 
-    //Implements Abstract Class for LiveGame Fragment
-    public void onFragmentInteraction(Uri uri){
-        /*
-        no Interactions yet */
+    public void onLiveGameListSelected(Match match){
 
+        //declares Fragment Manager
+        FragmentManager fragmentManager = getFragmentManager();
+
+        //initialises fragmentTransaction
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+
+        //initialises LiveGame Fragment
+        LiveGameFragment liveGameFragment = LiveGameFragment.newInstance(match, "Tournament");
+
+        //replaces liveGameListFragment with liveGameFragment with Match object selected in liveGameListFragment
+        fragmentTransaction.replace(R.id.fragment_container, liveGameFragment);
+        fragmentTransaction.addToBackStack(null);
+
+        //commits liveGameFragment
+        fragmentTransaction.commit();
     }
-
     /* Getters Setters*/
 
     public String getTag(){

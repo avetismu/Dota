@@ -119,7 +119,7 @@ public class NewsReaderFragment extends Fragment {
     /* Fragment Methods */
 
     /* NOT IN USE
-    // TODO: Rename method, update argument and hook method into UI event
+    // TODO: Rename method, game_event_row argument and hook method into UI event
     public void onButtonPressed(Uri uri) {
         if (mListener != null) {
             mListener.onFragmentInteraction(uri);

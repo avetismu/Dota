@@ -1,37 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="API_KEY">AIzaSyCtujPJUBt3GDlFD6R7FZywEZ9q4lQ80FQ</string>
-
     <string name="app_name">DotA</string>
 
+    <!-- API Keys -->
+    <string name="API_KEY">AIzaSyCtujPJUBt3GDlFD6R7FZywEZ9q4lQ80FQ</string>
+
+    <!-- ConnectionFailed Fragment -->
+
+    <string name="connection_failed_fragment_title">Try Connecting Again?</string>
+    <string name="connection_failed_fragment_message">Couldn\'t connect to Server. Please, Check your network\'s connection.</string>
+    <string name="connection_failed_fragment_positive_button">Connect Again</string>
+    <string name="connection_failed_fragment_negative_button">Cancel</string>
+
+    <!-- Navigation -->
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_navigator_super_class">NavigatorSuperClass</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <!-- News -->
+    <string name="title_activity_news">News</string>
+    <string name="grid_sq_img_contentdescription">Image holding news object image</string>
+
+    <!-- Live Game -->
+    <string name="title_activity_live_game">Live Games</string>
     <string name="list_by_priority_High">Highest Priority First</string>
     <string name="list_by_priority_Low">Lowest Priority First</string>
     <string name="list_by_time_Newest">Newest First</string>
     <string name="list_by_time_Oldest">Oldest First</string>
     <string name="priority_Icon">Priority level</string>
+    <string name="current_live_games">currently active Live Games</string>
 
-    <string name="title_activity_navigator_super_class">NavigatorSuperClass</string>
-    <string name="action_settings">Settings</string>
-    <string name="hello_world">Hello world!</string>
-    <string name="navigation_drawer_open">Open navigation drawer</string>
-    <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="action_example">Example action</string>
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="title_activity_news">News</string>
-    <string name="connection_failed_fragment_title">Try Connecting Again?</string>
-    <string name="connection_failed_fragment_message">Couldn\'t connect to Server. Please, Check your network\'s connection.</string>
-    <string name="connection_failed_fragment_positive_button">Connect Again</string>
-    <string name="connection_failed_fragment_negative_button">Cancel</string>
-    <string name="title_activity_video_player">VideoPlayer</string>
-    <string name="title_activity_vods">Vods</string>
-    <string name="lorem_ipsum">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor.</string>
-    <string name="grid_sq_img_contentdescription">Image holding news object image</string>
-
-
+    <!-- Vods -->
     <string name="vods_activity_more_vods">Check out these Vods</string>
     <string name="history">History</string>
-    <string name="recently_watched">Recently Watched</string>
+    <string name="recently_watched">Recently Watched: </string>
+    <string name="title_activity_vods">Vods</string>
 
+    <!-- VideoPlayer -->
+    <string name="title_activity_video_player">VideoPlayer</string>
+
+    <!-- Misc -->
+    <string name="lorem_ipsum">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor.</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>
